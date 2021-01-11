@@ -86,10 +86,7 @@
                     HorizontalTextAlignment="Center"
                     Margin="0,0,30,17"
                      />
-
             </Grid>
-            
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

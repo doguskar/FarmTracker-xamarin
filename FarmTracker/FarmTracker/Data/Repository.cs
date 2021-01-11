@@ -26,7 +26,21 @@ namespace FarmTracker.Data
             new Property {Name = "Ranch", Description="Ranch desc", Image="animal_property1.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
             new Property {Name = "Field", Description="My Field", Image="plant_property1.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
         };
-
+        public static List<Product> Products = new List<Product>
+        {
+            new Product {Name = "2x Aquarium"},
+            new Product {Name = "2x Airpump"},
+            new Product {Name = "1x External Filter"},
+            new Product {Name = "1x Tetra Discus"},
+            new Product {Name = "2x Aquarium"},
+            new Product {Name = "2x Airpump"},
+            new Product {Name = "1x External Filter"},
+            new Product {Name = "1x Tetra Discus"},
+            new Product {Name = "2x Aquarium"},
+            new Product {Name = "2x Airpump"},
+            new Product {Name = "1x External Filter"},
+            new Product {Name = "1x Tetra Discus"},
+        };
         static Repository()
         {
             
