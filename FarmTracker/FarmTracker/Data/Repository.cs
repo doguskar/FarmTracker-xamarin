@@ -41,6 +41,29 @@ namespace FarmTracker.Data
             new Product {Name = "1x External Filter"},
             new Product {Name = "1x Tetra Discus"},
         };
+        public static List<IncomeOrExpense> IncomeAndExpenses = new List<IncomeOrExpense>
+        {
+            new IncomeOrExpense {Name = "Patient", Cost="$35", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+            new IncomeOrExpense {Name = "Food", Cost="$150", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "Airpump", Cost="$70", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+            new IncomeOrExpense {Name = "Patient", Cost="$35", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+            new IncomeOrExpense {Name = "Food", Cost="$150", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "Airpump", Cost="$70", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+            new IncomeOrExpense {Name = "Patient", Cost="$35", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+            new IncomeOrExpense {Name = "Food", Cost="$150", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "Airpump", Cost="$70", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+            new IncomeOrExpense {Name = "Patient", Cost="$35", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+            new IncomeOrExpense {Name = "Food", Cost="$150", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "Airpump", Cost="$70", Image="moneybag2.jpg", IncomeFlag = false},
+            new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
+        };
         static Repository()
         {
             

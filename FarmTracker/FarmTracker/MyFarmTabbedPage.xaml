@@ -9,6 +9,6 @@
         <mypages:MyFarm IconImageSource="Home.png" Title="Home"/>
         <mypages:MyFarm IconImageSource="users.png" Title="Collaborators"/>
         <mypages:Products IconImageSource="settings.png" Title="Products"/>
-        <mypages:MyFarm IconImageSource="money.png" Title="Income and Expenses"/>
+        <mypages:IncomeAndExpenses IconImageSource="money.png" Title="Income and Expenses"/>
     </TabbedPage.Children>
 </TabbedPage>
