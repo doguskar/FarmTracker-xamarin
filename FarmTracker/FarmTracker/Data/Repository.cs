@@ -19,6 +19,13 @@ namespace FarmTracker.Data
             new Add { Id = 2, Name = "Tetra Discus", Image1="td.jpg", Price="$150", Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, deleniti laborum eius suscipit fugit voluptatibus omnis. Aspernatur animi numquam corporis autem saepe minus perferendis voluptatem illo. Tempora doloremque, minima quas libero dolor quisquam maiores doloribus, impedit ipsa facere quia provident, repellat veritatis asperiores quibusdam dolore distinctio quod molestias suscipit nostrum nobis voluptatibus! Voluptatum porro repellat, consequatur modi sit autem nisi, maxime aperiam est assumenda perspiciatis iusto iure ea veritatis molestiae voluptate voluptas. Optio exercitationem ullam eligendi animi incidunt voluptas commodi nemo aliquam vel tempora ad voluptatum, voluptatibus quis rem culpa provident, rerum officiis, quos eaque praesentium fugit debitis sequi blanditiis.", Owner =  Users.Find(e => e.Username == "doguskar")},
             new Add { Id = 4, Name = "Airpump", Image1="ap.jpg", Price="$75", Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, deleniti laborum eius suscipit fugit voluptatibus omnis. Aspernatur animi numquam corporis autem saepe minus perferendis voluptatem illo. Tempora doloremque, minima quas libero dolor quisquam maiores doloribus, impedit ipsa facere quia provident, repellat veritatis asperiores quibusdam dolore distinctio quod molestias suscipit nostrum nobis voluptatibus! Voluptatum porro repellat, consequatur modi sit autem nisi, maxime aperiam est assumenda perspiciatis iusto iure ea veritatis molestiae voluptate voluptas. Optio exercitationem ullam eligendi animi incidunt voluptas commodi nemo aliquam vel tempora ad voluptatum, voluptatibus quis rem culpa provident, rerum officiis, quos eaque praesentium fugit debitis sequi blanditiis.", Owner =  Users.Find(e => e.Username == "doguskar")},
         };
+        public static List<Property> Properties = new List<Property>
+        {
+            new Property {Name = "Main Aquarium", Description="120x65x45 Tank", Image="animal_property2.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+            new Property {Name = "Plant Aquarium", Description="60x60x60 Tank", Image="plant_property2.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+            new Property {Name = "Ranch", Description="Ranch desc", Image="animal_property1.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+            new Property {Name = "Field", Description="My Field", Image="plant_property1.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+        };
 
         static Repository()
         {

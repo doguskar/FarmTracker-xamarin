@@ -3,10 +3,93 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FarmTracker.MyFarm">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+        Padding="10"
+        >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <ListView  x:Name="lvProperties" HasUnevenRows="True" Grid.RowSpan="2">
+                    <ListView.Header>
+                        <ContentView>
+                            <Label 
+                            Text="Properties"
+                            FontSize="Title"
+                            TextColor="#66AF33"
+                            />
+                        </ContentView>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell  Height="315">
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10*" />
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Image
+                                    Source="{Binding Image}"  />
+
+                                    <Label
+                                    Text="{Binding Name}"
+                                    Grid.Row="1"
+                                    TextColor="#0e639c"
+                                    FontSize="Medium"
+                                    VerticalTextAlignment="Center"
+                                    />
+                                    <Label
+                                    Text="{Binding Description}"
+                                    Grid.Row="2"
+                                    FontSize="Small"
+                                    TextColor="#808080"
+                                    VerticalTextAlignment="End"
+                                     />
+                                    <Label
+                                    Text="{Binding LastModifiedDate}"
+                                    Grid.Row="3"
+                                    FontSize="Small"
+                                    TextColor="#808080"
+                                    VerticalTextAlignment="Start"
+                                     />
+
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Frame 
+                    Grid.Row="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    BackgroundColor="#66AF33"
+                    CornerRadius="100"
+                    WidthRequest="24"
+                    HeightRequest="24"
+                    Margin="10"
+                    >
+                </Frame>
+                <Label
+                    Grid.Row="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Text="+"
+                    TextColor="#fff"
+                    FontSize="40"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,0,30,17"
+                     />
+
+            </Grid>
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
