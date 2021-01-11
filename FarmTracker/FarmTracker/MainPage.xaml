@@ -3,22 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FarmTracker.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <StackLayout
+        Padding="10"
+        >
+        <ListView  x:Name="lvAdds" HasUnevenRows="True">
+            <ListView.Header>
+                <ContentView>
+                    <Label 
+                        Text="Adds"
+                        FontSize="Title"
+                        />
+                </ContentView>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell  Height="100">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
 
+
+                            <Image Grid.RowSpan="2"
+                                    Margin="5"
+                                    Source="{Binding Image1}"  />
+
+                            <Label
+                                Text="{Binding Name}"
+                                Grid.Column="1"
+                                TextColor="#0e639c"
+                                FontSize="Title"
+                                VerticalTextAlignment="End"
+                                />
+                            <Label
+                                Text="{Binding Price}"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontSize="Subtitle"
+                                TextColor="#808080"
+                                 />
+
+
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
