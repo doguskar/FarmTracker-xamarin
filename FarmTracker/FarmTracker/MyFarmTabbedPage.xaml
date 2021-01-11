@@ -7,7 +7,7 @@
              android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Children>
         <mypages:MyFarm IconImageSource="Home.png" Title="Home"/>
-        <mypages:MyFarm IconImageSource="users.png" Title="Collaborators"/>
+        <mypages:Collaborators IconImageSource="users.png" Title="Collaborators"/>
         <mypages:Products IconImageSource="settings.png" Title="Products"/>
         <mypages:IncomeAndExpenses IconImageSource="money.png" Title="Income and Expenses"/>
     </TabbedPage.Children>

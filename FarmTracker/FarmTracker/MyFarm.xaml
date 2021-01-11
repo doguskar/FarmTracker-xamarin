@@ -18,7 +18,7 @@
                             <Label 
                             Text="Properties"
                             FontSize="Title"
-                            TextColor="#66AF33"
+                            TextColor="#337ab7"
                             />
                         </ContentView>
                     </ListView.Header>

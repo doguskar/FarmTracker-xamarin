@@ -9,8 +9,8 @@ namespace FarmTracker.Data
     {
         public static List<User> Users = new List<User>
         {
-            new User {Id = 0 , Username = "doguskar", Email = "dogus.kar@hotmail.com", Password = "123123", Name = "Doğuş", Surname = "Kar", Phone = "+90 555 555 55 55"},
-            new User {Id = 1 , Username = "doguskar1", Email = "dogus.kar1@hotmail.com", Password = "123123", Name = "Doğuş", Surname = "Kar", Phone = "+90 555 555 55 55"},
+            new User {Id = 0 , Username = "doguskar", Email = "dogus.kar@hotmail.com", Password = "123123", FullName = "Doğuş Kar", Image = "profil2.jpg", Phone = "+90 555 555 55 55"},
+            new User {Id = 1 , Username = "doguskar1", Email = "dogus.kar1@hotmail.com", Password = "123123", FullName = "Doğuş Kar", Image = "profil.jpg", Phone = "+90 555 555 55 55"},
         };
         public static List<Add> Adds = new List<Add>
         {
@@ -64,6 +64,16 @@ namespace FarmTracker.Data
             new IncomeOrExpense {Name = "Airpump", Cost="$70", Image="moneybag2.jpg", IncomeFlag = false},
             new IncomeOrExpense {Name = "25x Babies sold", Cost="$25", Image="moneybag1.jpg", IncomeFlag = true},
         };
+        public static List<Collaborator> Collaborators = new List<Collaborator>
+        {
+            new Collaborator { User = Users.Find(e => e.Id == 0), RoleName = "Manager"},
+            new Collaborator { User = Users.Find(e => e.Id == 1), RoleName = "Formen"},
+            new Collaborator { User = Users.Find(e => e.Id == 0), RoleName = "Manager"},
+            new Collaborator { User = Users.Find(e => e.Id == 1), RoleName = "Formen"},
+            new Collaborator { User = Users.Find(e => e.Id == 0), RoleName = "Manager"},
+            new Collaborator { User = Users.Find(e => e.Id == 1), RoleName = "Formen"},
+        };
+
         static Repository()
         {
             
