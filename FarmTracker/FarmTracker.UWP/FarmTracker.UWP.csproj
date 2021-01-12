@@ -103,6 +103,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="alarmclock.png" />
+    <Content Include="animal1.jpg" />
+    <Content Include="animal4.jpg" />
+    <Content Include="animal_property1.jpg" />
+    <Content Include="animal_property2.jpg" />
+    <Content Include="ap.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
@@ -130,7 +136,31 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="bd.jpg" />
+    <Content Include="bg.jpg" />
+    <Content Include="blue_dolphin.jpg" />
+    <Content Include="document.png" />
+    <Content Include="enter.png" />
+    <Content Include="ey.jpg" />
+    <Content Include="eye.png" />
+    <Content Include="facebook.png" />
+    <Content Include="flogo.png" />
+    <Content Include="google.png" />
+    <Content Include="guppy.jpg" />
+    <Content Include="Home.png" />
+    <Content Include="money.png" />
+    <Content Include="moneybag1.png" />
+    <Content Include="moneybag2.png" />
+    <Content Include="plant_property1.jpg" />
+    <Content Include="plant_property2.jpg" />
+    <Content Include="profil.jpg" />
+    <Content Include="profil2.jpg" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="settings.png" />
+    <Content Include="td.jpg" />
+    <Content Include="tractor.png" />
+    <Content Include="user.png" />
+    <Content Include="users.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -144,7 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.1141" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9"/>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <ItemGroup>

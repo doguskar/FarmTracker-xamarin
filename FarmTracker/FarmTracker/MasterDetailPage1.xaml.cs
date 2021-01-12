@@ -16,6 +16,7 @@ namespace FarmTracker
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
+            Navigation.PushModalAsync(new LoginPage());
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

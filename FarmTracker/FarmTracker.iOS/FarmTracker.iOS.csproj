@@ -133,4 +133,94 @@
       <Name>FarmTracker</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\alarmclock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\animal_property1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\animal_property2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\animal1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\animal4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\blue_dolphin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\enter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ey.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\flogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\google.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\guppy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\moneybag1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\moneybag2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\plant_property1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\plant_property2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profil2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\td.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tractor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\users.png" />
+  </ItemGroup>
 </Project>
