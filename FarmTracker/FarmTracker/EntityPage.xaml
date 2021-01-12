@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmTracker.EntityPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image 
+                Aspect="AspectFill"
+                Source="guppy.jpg"/>
+            <Label
+                Margin="10"
+                Grid.Row="1"
+                Text="Guppy"
+                FontSize="Title"
+                TextColor="#0e639c"
+                VerticalOptions="Center"
+                />
+            <ScrollView Margin="10" Grid.Row="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Text="Heath:"
+                        FontSize="Medium"
+                        TextColor="#1e1e1e"
+                        />
+                    <Label
+                        Grid.Column="1"
+                        Text="Healty"
+                        FontSize="Medium"
+                        TextColor="#3F9704"
+                        />
+                    <Label
+                        Grid.Row="1"
+                        Text="Gender:"
+                        FontSize="Medium"
+                        TextColor="#1e1e1e"
+                        />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="Male"
+                        FontSize="Medium"
+                        TextColor="#0e639c"
+                        />
+                    <Label
+                        Grid.Row="2"
+                        Text="Height:"
+                        FontSize="Medium"
+                        TextColor="#1e1e1e"
+                        />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="3cm"
+                        FontSize="Medium"
+                        TextColor="#808080"
+                        />
+                    <Label
+                        Grid.Row="3"
+                        Text="Stud:"
+                        FontSize="Medium"
+                        TextColor="#1e1e1e"
+                        />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="Yes"
+                        FontSize="Medium"
+                        TextColor="#808080"
+                        />
+                    <Label
+                        Grid.Row="4"
+                        Text="Heath:"
+                        FontSize="Medium"
+                        TextColor="#1e1e1e"
+                        />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="Healty"
+                        FontSize="Medium"
+                        TextColor="#808080"
+                        />
+                    <Label
+                        Grid.Row="5"
+                        Text="Heath:"
+                        FontSize="Medium"
+                        TextColor="#1e1e1e"
+                        />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="Healty"
+                        FontSize="Medium"
+                        TextColor="#808080"
+                        />
+                    
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

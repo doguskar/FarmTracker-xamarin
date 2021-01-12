@@ -18,5 +18,10 @@ namespace FarmTracker
             InitializeComponent();
             lvEntities.ItemsSource = Repository.Entities;
         }
+
+        private void ViewCell_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EntityPage() { Title = "Guppy" });
+        }
     }
 }
