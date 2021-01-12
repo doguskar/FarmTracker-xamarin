@@ -73,6 +73,27 @@ namespace FarmTracker.Data
             new Collaborator { User = Users.Find(e => e.Id == 0), RoleName = "Manager"},
             new Collaborator { User = Users.Find(e => e.Id == 1), RoleName = "Formen"},
         };
+        public static List<Entity> Entities = new List<Entity>
+        {
+            new Entity {Name = "Blue Dolphine", Id="ID: 1", Image="blue_dolphin.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+            new Entity {Name = "Guppy", Id="ID: 2", Image="guppy.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+            new Entity {Name = "Chicken", Id="ID: 3", Image="animal1.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+            new Entity {Name = "Sheep", Id="ID: 4", Image="animal4.jpg", LastModifiedDate = "Last Modified: 2020-01-11 20:04"},
+        };
+        public static List<MyPropertyDetail> PropertyDetails = new List<MyPropertyDetail>
+        {
+            new MyPropertyDetail {Name = "Water Changes", Image="document.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Income", Image="moneybag1.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Expense", Image="moneybag2.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Alarm | 2021-01-20 07:00", Image="alarmclock.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Note", Image="document.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Water Changes", Image="document.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Income", Image="moneybag1.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Expense", Image="moneybag2.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Alarm | 2021-01-20 07:00", Image="alarmclock.jpg", Date = "Date: 2020-01-11 20:04"},
+            new MyPropertyDetail {Name = "Note", Image="document.jpg", Date = "Date: 2020-01-11 20:04"},
+        };
+
 
         static Repository()
         {

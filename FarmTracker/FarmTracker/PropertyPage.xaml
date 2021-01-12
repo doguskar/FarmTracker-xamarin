@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.MyFarm">
+             x:Class="FarmTracker.PropertyPage">
     <ContentPage.Content>
         <StackLayout
         Padding="10"
@@ -11,12 +11,12 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
-                <ListView  x:Name="lvProperties" HasUnevenRows="True" Grid.RowSpan="2">
+
+                <ListView  x:Name="lvEntities" HasUnevenRows="True" Grid.RowSpan="2">
                     <ListView.Header>
                         <ContentView>
                             <Label 
-                            Text="Properties"
+                            Text="Entities"
                             FontSize="Title"
                             TextColor="#3F9704"
                             />
@@ -24,7 +24,7 @@
                     </ListView.Header>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell  Height="250" Tapped="ViewCell_Tapped">
+                            <ViewCell  Height="250">
                                 <Grid Margin="0,10,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10*" />
@@ -45,7 +45,7 @@
                                     VerticalTextAlignment="Center"
                                     />
                                     <Label
-                                    Text="{Binding Description}"
+                                    Text="{Binding Id}"
                                     Grid.Row="2"
                                     FontSize="Small"
                                     TextColor="#808080"

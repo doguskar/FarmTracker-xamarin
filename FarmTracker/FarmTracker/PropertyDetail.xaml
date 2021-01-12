@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmTracker.PropertyDetail">
+    <ContentPage.Content>
+        <StackLayout
+        Padding="10"
+        >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <ListView  x:Name="lvProperyDetails" HasUnevenRows="True" Grid.RowSpan="2">
+                    <ListView.Header>
+                        <ContentView>
+                            <Label 
+                            Text="Details"
+                            FontSize="Title"
+                            TextColor="#3F9704"
+                            />
+                        </ContentView>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell  Height="100">
+                                <Frame  HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="10*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Image 
+                                            Grid.RowSpan="2"
+                                            Source="{Binding Image}"  />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding Name}"
+                                            TextColor="#1e1e1e"
+                                            FontSize="Medium"
+                                            VerticalTextAlignment="End"
+                                            />
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Text="{Binding Date}"
+                                            TextColor="#808080"
+                                            FontSize="Medium"
+                                            VerticalTextAlignment="Start"
+                                            />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Frame 
+                    Grid.Row="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    BackgroundColor="#66AF33"
+                    CornerRadius="100"
+                    WidthRequest="24"
+                    HeightRequest="24"
+                    Margin="10"
+                    >
+                </Frame>
+                <Label
+                    Grid.Row="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Text="+"
+                    TextColor="#fff"
+                    FontSize="40"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,0,30,17"
+                     />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

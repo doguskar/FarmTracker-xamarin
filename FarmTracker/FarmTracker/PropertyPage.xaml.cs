@@ -11,17 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace FarmTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyFarm : ContentPage
+    public partial class PropertyPage : ContentPage
     {
-        public MyFarm()
+        public PropertyPage()
         {
             InitializeComponent();
-            lvProperties.ItemsSource = Repository.Properties;
-        }
-
-        private void ViewCell_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new MyProductTabbedPage() { Title = "MyProperty"});
+            lvEntities.ItemsSource = Repository.Entities;
         }
     }
 }
