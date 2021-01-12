@@ -35,6 +35,7 @@ namespace FarmTracker
                 {
                     new MasterDetailPage1MasterMenuItem { Id = 0, Title = "Homepage", Image="Home.png", TargetType = typeof(MainPage)},
                     new MasterDetailPage1MasterMenuItem { Id = 1, Title = "MyFarm", Image="tractor.png", TargetType = typeof(MyFarmTabbedPage)},
+                    new MasterDetailPage1MasterMenuItem { Id = 2, Title = "Profile", Image="user.png", TargetType = typeof(ProfilePage)},
                 });
             }
 

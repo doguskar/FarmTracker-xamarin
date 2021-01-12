@@ -8433,7 +8433,10 @@ namespace FarmTracker.Droid
 			public const int tractor = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int users = 2131165326;
+			public const int user = 2131165326;
+			
+			// aapt resource value: 0x7F07008F
+			public const int users = 2131165327;
 			
 			static Drawable()
 			{
