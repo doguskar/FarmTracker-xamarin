@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FarmTracker.MainPage">
-
     <StackLayout
         Padding="10"
         >
@@ -12,44 +11,48 @@
                     <Label 
                         Text="Adds"
                         FontSize="Title"
+                        TextColor="#3F9704"
                         />
                 </ContentView>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell  Height="100">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
+                    <ViewCell  Height="130">
+                        <Frame  HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
 
 
-                            <Image Grid.RowSpan="2"
-                                    Margin="5"
-                                    Source="{Binding Image1}"  />
+                                <Image Grid.RowSpan="2"
+                                        Margin="5"
+                                       Aspect="AspectFill"
+                                        Source="{Binding Image1}"  />
 
-                            <Label
-                                Text="{Binding Name}"
-                                Grid.Column="1"
-                                TextColor="#0e639c"
-                                FontSize="Title"
-                                VerticalTextAlignment="End"
-                                />
-                            <Label
-                                Text="{Binding Price}"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                FontSize="Subtitle"
-                                TextColor="#808080"
-                                 />
+                                <Label
+                                    Text="{Binding Name}"
+                                    Grid.Column="1"
+                                    TextColor="#0e639c"
+                                    FontSize="Medium"
+                                    VerticalTextAlignment="End"
+                                    />
+                                <Label
+                                    Text="{Binding Price}"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontSize="Subtitle"
+                                    TextColor="#808080"
+                                     />
 
 
-                        </Grid>
+                            </Grid>
+                        </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
