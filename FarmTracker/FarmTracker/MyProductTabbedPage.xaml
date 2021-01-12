@@ -6,7 +6,7 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Children>
-        <mypages:PropertyPage IconImageSource="Home.png" Title="Home"/>
+        <mypages:PropertyPage IconImageSource="Home.png" Title="Property"/>
         <mypages:PropertyDetail IconImageSource="document.png" Title="Details"/>
     </TabbedPage.Children>
 </TabbedPage>

@@ -17,7 +17,7 @@
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell  Height="130">
+                    <ViewCell  Height="130" Tapped="ViewCell_Tapped">
                         <Frame  HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
                             <Grid>
                                 <Grid.RowDefinitions>

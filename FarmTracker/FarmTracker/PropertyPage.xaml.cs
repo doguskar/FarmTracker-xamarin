@@ -21,7 +21,7 @@ namespace FarmTracker
 
         private void ViewCell_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EntityPage() { Title = "Guppy" });
+            Navigation.PushAsync(new EntityTabbedPage() { Title = "Guppy" });
         }
     }
 }

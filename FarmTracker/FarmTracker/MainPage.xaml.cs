@@ -16,5 +16,10 @@ namespace FarmTracker
             InitializeComponent();
             lvAdds.ItemsSource = Repository.Adds;
         }
+
+        private void ViewCell_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddDetailPage() { Title = "Angle" });
+        }
     }
 }

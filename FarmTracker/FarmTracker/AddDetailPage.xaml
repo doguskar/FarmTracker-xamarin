@@ -1,54 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.EntityPage">
+             x:Class="FarmTracker.AddDetailPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="250"/>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Image 
                 Aspect="AspectFill"
-                Source="guppy.jpg"/>
+                Source="bd.jpg"/>
             <Label
                 Margin="10"
                 Grid.Row="1"
-                Text="Guppy"
+                Text="Angle"
                 FontSize="Title"
                 TextColor="#0e639c"
                 VerticalOptions="Center"
                 />
             <ScrollView Margin="10" Grid.Row="2">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label
-                        Text="Heath:"
-                        FontSize="Medium"
-                        TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Column="1"
-                        Text="Healty"
-                        FontSize="Medium"
+                        Grid.ColumnSpan="2"
+                        Text="Details"
+                        FontSize="Large"
                         TextColor="#3F9704"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="1"
                         Text="Gender:"
                         FontSize="Medium"
                         TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="1"
@@ -56,14 +56,12 @@
                         Text="Male"
                         FontSize="Medium"
                         TextColor="#0e639c"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="2"
                         Text="Height:"
                         FontSize="Medium"
                         TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="2"
@@ -71,14 +69,12 @@
                         Text="3cm"
                         FontSize="Medium"
                         TextColor="#808080"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="3"
                         Text="Stud:"
                         FontSize="Medium"
                         TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="3"
@@ -86,39 +82,74 @@
                         Text="Yes"
                         FontSize="Medium"
                         TextColor="#808080"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="4"
-                        Text="Birth Date:"
+                        Text="Price:"
                         FontSize="Medium"
                         TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
                         />
                     <Label
                         Grid.Row="4"
                         Grid.Column="1"
-                        Text="2020-05-01"
+                        Text="$100"
                         FontSize="Medium"
                         TextColor="#808080"
-                        Margin="0,5,0,5"
+                        />
+                </Grid>
+            </ScrollView>
+            <ScrollView  Margin="10,0,10,10" Grid.Row="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.ColumnSpan="2"
+                        Text="Contact"
+                        FontSize="Large"
+                        TextColor="#3F9704"
                         />
                     <Label
-                        Grid.Row="5"
-                        Text="Last Modified:"
+                        Grid.Row="1"
+                        Text="Owner:"
                         FontSize="Medium"
                         TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
                         />
                     <Label
-                        Grid.Row="5"
+                        Grid.Row="1"
                         Grid.Column="1"
-                        Text="2021-01-01"
+                        Text="Doğuş Kar"
                         FontSize="Medium"
-                        TextColor="#808080"
-                        Margin="0,5,0,5"
                         />
-                    
+                    <Label
+                        Grid.Row="2"
+                        Text="Phone:"
+                        FontSize="Medium"
+                        TextColor="#1e1e1e"
+                        />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="+90 555 555 55 55"
+                        FontSize="Medium"
+                        />
+                    <Label
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Send Message"
+                        FontSize="Medium"
+                        TextColor="#0e639c"
+                        TextDecorations="Underline"
+                        />
+
                 </Grid>
             </ScrollView>
         </Grid>
