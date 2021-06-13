@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.LoginPage">
+             x:Class="FarmTracker.RegisterPage">
     <ContentPage.Content>
         <Grid Margin="10">
             <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
             </Frame>
             <Label
                 Grid.Row="1"
-                Text="LOGIN"
+                Text="REGISTER"
                 FontSize="32"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
@@ -26,39 +26,47 @@
                 />
             <Entry 
                 Grid.Row="2"
-                Placeholder="Username"
-                Text="{Binding Key}"/>
+                Placeholder="Full Name*"
+                Text="{Binding FullName}"/>
             <Entry 
                 Grid.Row="3"
-                Placeholder="Password" 
-                IsPassword="{Binding IsPassword}"
+                Placeholder="Username*"
+                Text="{Binding Username}"/>
+            <Entry 
+                Grid.Row="4"
+                Placeholder="Password*" 
+                IsPassword="True"
                 Text="{Binding Password}"/>
             <ImageButton 
-                Grid.Row="3"
+                Grid.Row="4"
                 Source="eye.png"
                 BackgroundColor="Transparent"
                 Padding="5"
-                HorizontalOptions="End"
-                Command="{Binding ShowPasswordCommand}}"/>
-            <Button
-                Grid.Row="4"
-                Text="LOGIN"
-                BackgroundColor="#3F9704"
-                TextColor="#fff"
-                FontSize="Medium"
-                Command="{Binding SignInCommand}"
-                />
-            <Button
+                HorizontalOptions="End"/>
+            <Entry 
                 Grid.Row="5"
+                Placeholder="Email*"
+                Text="{Binding Email}"/>
+            <Entry 
+                Grid.Row="6"
+                Placeholder="Phone"
+                Text="{Binding Phone}"/>
+            <Button
+                Grid.Row="7"
                 Text="REGISTER"
                 BackgroundColor="#337ab7"
                 TextColor="#fff"
                 FontSize="Medium"
-                Command="{Binding RegisterCommand}"
+                Command="{Binding SignUpCommand}"
                 />
-            <Entry
+            <Button
                 Grid.Row="8"
-                IsVisible="False"/>
+                Text="BACK"
+                BackgroundColor="#f0f0f0"
+                TextColor="#000"
+                FontSize="Medium"
+                Command="{Binding BackCommand}"
+                />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

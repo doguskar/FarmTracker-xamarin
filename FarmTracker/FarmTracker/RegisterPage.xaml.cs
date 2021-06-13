@@ -1,4 +1,4 @@
-﻿using FarmTracker.Data;
+﻿using FarmTracker.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace FarmTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Collaborators : ContentPage
+    public partial class RegisterPage : ContentPage
     {
-        public Collaborators()
+        public RegisterPage()
         {
             InitializeComponent();
-            //lvCollaborators.ItemsSource = Repository.Collaborators;
+            BindingContext = new RegisterViewModel();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace FarmTracker
         public MainPage()
         {
             InitializeComponent();
-            lvAdds.ItemsSource = Repository.Adds;
+            //lvAdds.ItemsSource = Repository.Adds;
         }
 
         private void ViewCell_Tapped(object sender, EventArgs e)

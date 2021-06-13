@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FarmTracker.ModelView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,11 @@ namespace FarmTracker
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel();
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
+        protected override bool OnBackButtonPressed()
         {
-            Navigation.PopModalAsync();
+            return false;
         }
     }
 }

@@ -34,9 +34,9 @@ namespace FarmTracker
                 MenuItems = new ObservableCollection<MasterDetailPage1MasterMenuItem>(new[]
                 {
                     new MasterDetailPage1MasterMenuItem { Id = 0, Title = "Homepage", Image="Home.png", TargetType = typeof(MainPage)},
-                    new MasterDetailPage1MasterMenuItem { Id = 1, Title = "MyFarm", Image="tractor.png", TargetType = typeof(MyFarmTabbedPage)},
+                    new MasterDetailPage1MasterMenuItem { Id = 1, Title = "Income and Expenses", Image="money.png", TargetType = typeof(MyFarmTabbedPage)},
                     new MasterDetailPage1MasterMenuItem { Id = 2, Title = "Profile", Image="user.png", TargetType = typeof(ProfilePage)},
-                    new MasterDetailPage1MasterMenuItem { Id = 3, Title = "Login", Image="enter.png", TargetType = typeof(LoginPage)},
+                    new MasterDetailPage1MasterMenuItem { Id = 3, Title = "Log Out", Image="logout.png", TargetType = typeof(LoginPage)},
                 });
             }
 
