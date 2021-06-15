@@ -7,6 +7,7 @@ namespace FarmTracker.Data
 {
     public static class Repository
     {
+        /*
         public static List<User> Users = new List<User>
         {
             new User {Id = Guid.NewGuid(), Username = "doguskar", Email = "dogus.kar@hotmail.com", Password = "123123", FullName = "Doğuş Kar", Image = "profil2.jpg", Phone = "+90 555 555 55 55"},
@@ -77,7 +78,7 @@ namespace FarmTracker.Data
             new MyPropertyDetail {Name = "Alarm | 2021-01-20 07:00", Image="alarmclock.jpg", Date = "Date: 2020-01-11 20:04"},
             new MyPropertyDetail {Name = "Note", Image="document.jpg", Date = "Date: 2020-01-11 20:04"},
         };
-
+        */
 
         static Repository()
         {
