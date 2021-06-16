@@ -57,5 +57,24 @@ namespace FarmTracker.Data
             }
             return null;
         }
+        public int DeletePropertyById(Guid guid)
+        {
+            int result = 0;
+            try
+            {
+                Property item = GetPropertyById(guid);
+                if(item != null)
+                {
+                    result = con.Delete(item);
+                    StatusMessage = string.Format("{0} record(s) deleted [Name: {1})", result, item.Name);
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to delete {0}. Error: {1}", item.Id, ex.Message);
+            }
+
+            return result;
+        }
     }
 }

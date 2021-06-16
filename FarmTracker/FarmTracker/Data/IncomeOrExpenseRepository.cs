@@ -16,6 +16,19 @@ namespace FarmTracker.Data
             con = new SQLiteConnection(dbPath);
             con.CreateTable<Property>();
         }
+        public IncomeOrExpense GetIncomeOrExpenseById(Guid guid)
+        {
+            try
+            {
+                return con.Table<IncomeOrExpense>().Where(x => x.Id.Equals(guid))
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+            return null;
+        }
         public List<IncomeOrExpense> GetIncomeOrExpensesByUserId(Guid guid)
         {
             try
@@ -28,6 +41,25 @@ namespace FarmTracker.Data
                 StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
             }
             return null;
+        }
+        public int DeleteIncomeOrExpenseById(Guid guid)
+        {
+            int result = 0;
+            try
+            {
+                IncomeOrExpense item = GetIncomeOrExpenseById(guid);
+                if(item != null)
+                {
+                    result = con.Delete(item);
+                    StatusMessage = string.Format("{0} record(s) deleted [Name: {1})", result, item.Name);
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to delete {0}. Error: {1}", item.Id, ex.Message);
+            }
+
+            return result;
         }
     }
 }
