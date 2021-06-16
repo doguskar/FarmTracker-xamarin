@@ -4,9 +4,9 @@ using System.Text;
 
 namespace FarmTracker.Model
 {
-    public class PropertyDetail
+    public enum DetailType
     {
-        public string Name { get; set; }
-        public string Image { get; set; }
+        Property,
+        Entity
     }
 }

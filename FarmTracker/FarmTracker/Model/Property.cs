@@ -16,6 +16,7 @@ namespace FarmTracker.Model
         public Category Category { get; set; }
         public User User { get; set; }
         public List<Entity> Entities { get; set; }
+        public List<Detail> Detaials { get; set; }
 
 
     }

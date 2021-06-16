@@ -86,6 +86,33 @@ namespace FarmTracker
                 new Entity{ Id = Guid.NewGuid(), Name = "Endler", Count = 5, Cost = 0, CategoryId = guids[14], PropertyId = guids[13], LastModifiedDate = DateTime.UtcNow },
             };
 
+            List<Detail> entityDetailList = new List<Detail>
+            {
+                new Detail{ Id = Guid.NewGuid(), Name = "Pregnant", RemainderDate = DateTime.UtcNow.AddDays(-15), RemainderCompletedDate = DateTime.UtcNow, DetailType = DetailType.Entity, OwnerId = guids[17]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Birth", Description="100 Babies", DetailType = DetailType.Entity, OwnerId = guids[17]},
+            };
+
+            List<Detail> entityDetailList2 = new List<Detail>
+            {
+                new Detail{ Id = Guid.NewGuid(), Name = "Patient", Description="Not eating", DetailType = DetailType.Entity, OwnerId = guids[16]},
+            };
+
+            List<Detail> propertyDetailList = new List<Detail>
+            {
+                new Detail{ Id = Guid.NewGuid(), Name = "Water change", Description="weakly %30 water change", Date = DateTime.UtcNow, DetailType = DetailType.Property, OwnerId = guids[11]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Water change", Description="weakly %25 water change", Date = DateTime.UtcNow.AddDays(-7), DetailType = DetailType.Property, OwnerId = guids[11]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Water change", Description="weakly %50 water change", Date = DateTime.UtcNow.AddDays(-14), DetailType = DetailType.Property, OwnerId = guids[11]},
+            };
+
+            List<IncomeOrExpense> incomeAndExpensesList = new List<IncomeOrExpense>
+            {
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Income 1", Cost = 100, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-10).AddHours(-5), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Income 2", Cost = 50, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-7).AddHours(-12), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Expense 1", Cost = 75, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-5).AddHours(-2), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Income 3", Cost = 30, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-8).AddHours(-1), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Expense 2", Cost = 55, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-2).AddHours(-2), UserId = guids[10] },
+            };
+
 
         }
     }

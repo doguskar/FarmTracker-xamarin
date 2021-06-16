@@ -21,5 +21,6 @@ namespace FarmTracker.Model
         
         public Category Category { get; set; }
         public Property Property { get; set; }
+        public List<Detail> Detaials { get; set; }
     }
 }
