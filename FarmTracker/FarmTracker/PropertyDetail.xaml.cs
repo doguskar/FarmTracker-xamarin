@@ -16,7 +16,7 @@ namespace FarmTracker
         public PropertyDetail()
         {
             InitializeComponent();
-            lvProperyDetails.ItemsSource = Repository.PropertyDetails;
+            //lvProperyDetails.ItemsSource = Repository.PropertyDetails;
         }
     }
 }

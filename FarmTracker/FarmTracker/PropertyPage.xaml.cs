@@ -16,7 +16,7 @@ namespace FarmTracker
         public PropertyPage()
         {
             InitializeComponent();
-            lvEntities.ItemsSource = Repository.Entities;
+            //lvEntities.ItemsSource = Repository.Entities;
         }
 
         private void ViewCell_Tapped(object sender, EventArgs e)

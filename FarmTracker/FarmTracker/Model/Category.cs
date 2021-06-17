@@ -11,7 +11,5 @@ namespace FarmTracker.Model
         public string Pic { get; set; }
         public bool EndPointFlag { get; set; }
         public Guid SuperCategoryId{ get; set; }
-        
-        public Category SuperCategory { get; set; }
     }
 }

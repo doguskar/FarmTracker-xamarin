@@ -18,7 +18,7 @@ namespace FarmTracker.Data
         public EntityRepository(string dbPath)
         {
             con = new SQLiteConnection(dbPath);
-            con.CreateTable<Property>();
+            con.CreateTable<Entity>();
 
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             propertyRepository = new PropertyRepository(System.IO.Path.Combine(path, "farmTracker"));
@@ -40,11 +40,11 @@ namespace FarmTracker.Data
             }
             return null;
         }
-        public List<Entity> GetEntitiesByPropertyId(Guid guid)
+        public List<Entity> GetEntitiesByOwnerId(Guid guid)
         {
             try
             {
-                List<Entity> entityList = con.Table<Entity>().Where(x => x.PropertyId.Equals(guid))
+                List<Entity> entityList = con.Table<Entity>().Where(x => x.OwnerId.Equals(guid))
                     .ToList();
                 return entityList;
             }
@@ -63,7 +63,7 @@ namespace FarmTracker.Data
                     throw new Exception("Entity can not be null!");
                 else if(entity.CategoryId == null)
                     throw new Exception("CategoryId can not be null!");
-                else if(entity.PropertyId == null)
+                else if(entity.OwnerId == null)
                     throw new Exception("PropertyId can not be null!");
                 else if(entity.EntityType == null)
                     throw new Exception("EntityType can not be null!");
@@ -75,7 +75,7 @@ namespace FarmTracker.Data
                 }
                 if (entity.EntityType == EntityType.Alive)
                 {
-                    Property property = propertyRepository.GetPropertyById(detail.OwnerId);
+                    Property property = propertyRepository.GetPropertyById(entity.OwnerId);
                     if (property == null)
                     {
                         throw new Exception("Owner can not find!");
@@ -84,7 +84,7 @@ namespace FarmTracker.Data
                 else if (entity.EntityType == EntityType.Item)
                 {
                     User user = userRepository.GetUserById(entity.OwnerId);
-                    if (property == null)
+                    if (user == null)
                     {
                         throw new Exception("Owner can not find!");
                     }
@@ -97,7 +97,7 @@ namespace FarmTracker.Data
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to add {0}. Error: {1}", user.Email, ex.Message);
+                StatusMessage = string.Format("Failed to add {0}. Error: {1}", entity.Name, ex.Message);
             }
 
             return result;
@@ -110,15 +110,29 @@ namespace FarmTracker.Data
                 Entity item = GetEntityById(guid);
                 if(item != null)
                 {
-                    return con.Delete(item);
+                    result = con.Delete(item);
                     StatusMessage = string.Format("{0} record(s) deleted [Name: {1})", result, item.Name);
                 }
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to delete {0}. Error: {1}", item.Id, ex.Message);
+                StatusMessage = string.Format("Failed to delete {0}. Error: {1}", guid, ex.Message);
             }
 
+            return result;
+        }
+        public int DeleteAll()
+        {
+            int result = 0;
+            try
+            {
+                result = con.DeleteAll<Entity>();
+                StatusMessage = string.Format("{0} record(s) deleted", result);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error: {0}", ex.Message);
+            }
             return result;
         }
     }

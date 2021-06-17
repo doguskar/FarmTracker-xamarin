@@ -88,8 +88,8 @@ namespace FarmTracker.Data
                 }
                 else if (detail.DetailType == DetailType.Entity)
                 {
-                    Entity entity = entityRepository.GetPropertyById(detail.OwnerId);
-                    if (property == null)
+                    Entity entity = entityRepository.GetEntityById(detail.OwnerId);
+                    if (entity == null)
                     {
                         throw new Exception("Owner can not find!");
                     }
@@ -103,7 +103,7 @@ namespace FarmTracker.Data
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to add {0}. Error: {1}", detail.Email, ex.Message);
+                StatusMessage = string.Format("Failed to add {0}. Error: {1}", detail.Name, ex.Message);
             }
 
             return result;
@@ -122,9 +122,23 @@ namespace FarmTracker.Data
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to delete {0}. Error: {1}", item.Id, ex.Message);
+                StatusMessage = string.Format("Failed to delete {0}. Error: {1}", guid, ex.Message);
             }
 
+            return result;
+        }
+        public int DeleteAll()
+        {
+            int result = 0;
+            try
+            {
+                result = con.DeleteAll<Detail>();
+                StatusMessage = string.Format("{0} record(s) deleted", result);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error: {0}", ex.Message);
+            }
             return result;
         }
     }

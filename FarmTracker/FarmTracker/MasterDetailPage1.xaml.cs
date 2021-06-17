@@ -47,6 +47,7 @@ namespace FarmTracker
             if(item.Id == 3)
             {
                 SignOut();
+                return;
             }
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;

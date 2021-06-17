@@ -16,7 +16,7 @@ namespace FarmTracker
         public Products()
         {
             InitializeComponent();
-            lvProducts.ItemsSource = Repository.Products;
+            //lvProducts.ItemsSource = Repository.Products;
         }
     }
 }

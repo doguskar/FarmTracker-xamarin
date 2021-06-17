@@ -72,5 +72,19 @@ namespace FarmTracker.Data
 
             return result;
         }
+        public int DeleteAll()
+        {
+            int result = 0;
+            try
+            {
+                result = con.DeleteAll<User>();
+                StatusMessage = string.Format("{0} record(s) deleted", result);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error: {0}", ex.Message);
+            }
+            return result;
+        }
     }
 }
