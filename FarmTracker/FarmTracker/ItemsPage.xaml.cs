@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace FarmTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Products : ContentPage
+    public partial class ItemsPage : ContentPage
     {
-        public Products()
+        public ItemsPage()
         {
             InitializeComponent();
             //lvProducts.ItemsSource = Repository.Products;

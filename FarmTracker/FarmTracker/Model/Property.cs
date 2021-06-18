@@ -12,6 +12,7 @@ namespace FarmTracker.Model
         public DateTime LastModifiedDate{ get; set; }
         public Guid CategoryId { get; set; }
         public Guid UserId { get; set; }
+        public string Image { get; set; }
 
     }
 }

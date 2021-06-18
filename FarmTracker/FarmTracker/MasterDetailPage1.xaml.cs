@@ -14,28 +14,12 @@ namespace FarmTracker
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterDetailPage1 : MasterDetailPage
     {
-        private UserRepository userRepository;
         public MasterDetailPage1()
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
 
-            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            userRepository = new UserRepository(System.IO.Path.Combine(path, "farmTracker"));
-
-            string userId = Preferences.Get("userId", null);
-            if (!String.IsNullOrWhiteSpace(userId))
-            {
-                User user = userRepository.GetUserById(new Guid(userId));
-                if (user == null)
-                {
-                    Navigation.PushModalAsync(new LoginPage());
-                }
-            }
-            else
-            {
-                Navigation.PushModalAsync(new LoginPage());
-            }
+            
 
         }
 
@@ -61,7 +45,7 @@ namespace FarmTracker
         private void SignOut()
         {
             Preferences.Remove("userId");
-            Navigation.PushModalAsync(new LoginPage());
+            App.Current.MainPage = new LoginPage();
         }
             
     }

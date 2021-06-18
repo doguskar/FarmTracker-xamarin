@@ -22,6 +22,7 @@ namespace FarmTracker.Data
 
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             userRepository = new UserRepository(System.IO.Path.Combine(path, "farmTracker"));
+            categoryRepository = new CategoryRepository(System.IO.Path.Combine(path, "farmTracker"));
         }
         public Property GetPropertyById(Guid guid)
         {
@@ -29,6 +30,8 @@ namespace FarmTracker.Data
             {
                 Property property = con.Table<Property>().Where(x => x.Id.Equals(guid))
                     .FirstOrDefault();
+                if (string.IsNullOrWhiteSpace(property.Image))
+                    property.Image = categoryRepository.GetCategoryById(property.CategoryId).Image;
                 return property;
             }
             catch (Exception ex)
@@ -43,6 +46,11 @@ namespace FarmTracker.Data
             {
                 List<Property> propertyList = con.Table<Property>().Where(x => x.UserId.Equals(guid))
                     .ToList();
+                foreach (var item in propertyList)
+                {
+                    if (string.IsNullOrWhiteSpace(item.Image))
+                        item.Image = categoryRepository.GetCategoryById(item.CategoryId).Image;
+                }
                 return propertyList;
             }
             catch (Exception ex)
@@ -66,8 +74,9 @@ namespace FarmTracker.Data
                 User user = userRepository.GetUserById(item.UserId);
                 if (user == null)
                     throw new Exception(string.Format("User is not found! [UserId: {0}", item.UserId));
-
-                item.Id = Guid.NewGuid();
+               
+                if (item.Id == null)
+                    item.Id = Guid.NewGuid();
                 result = con.Insert(item);
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, item.Name);
             }

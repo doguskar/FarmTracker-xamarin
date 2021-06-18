@@ -34,7 +34,8 @@ namespace FarmTracker.Data
             int result = 0;
             try
             {
-                item.Id = Guid.NewGuid();
+                if (item.Id == null)
+                    item.Id = Guid.NewGuid();
                 result = con.Insert(item);
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, item.Name);
             }

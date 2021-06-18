@@ -1,4 +1,4 @@
-﻿using FarmTracker.ModelView;
+﻿using FarmTracker.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -11,12 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace FarmTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
+    public partial class PropertiesPage : ContentPage
     {
-        public RegisterPage()
+        public PropertiesPage()
         {
             InitializeComponent();
-            BindingContext = new RegisterViewModel();
         }
     }
 }

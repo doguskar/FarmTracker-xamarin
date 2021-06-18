@@ -4,12 +4,12 @@ using System.Text;
 
 namespace FarmTracker.Model
 {
-    public class Category
+    class PropertyDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Image { get; set; }
-        public bool EndPointFlag { get; set; }
-        public Guid SuperCategoryId{ get; set; }
+        public string Description { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+
     }
 }

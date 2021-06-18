@@ -10,8 +10,10 @@ namespace FarmTracker
 {
     public partial class App : Application
     {
+        private UserRepository userRepository;
         public App()
         {
+            //Preferences.Remove("initialize");
             bool initialize = Preferences.Get("initialize", true);
             if (initialize)
             {
@@ -20,7 +22,27 @@ namespace FarmTracker
 
             InitializeComponent();
 
-            MainPage = new MasterDetailPage1();
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            userRepository = new UserRepository(System.IO.Path.Combine(path, "farmTracker"));
+
+            string userId = Preferences.Get("userId", null);
+            if (!String.IsNullOrWhiteSpace(userId))
+            {
+                User user = userRepository.GetUserById(new Guid(userId));
+                if (user == null)
+                {
+                    MainPage = new LoginPage();
+                }
+                else
+                {
+                    MainPage = new MasterDetailPage1();
+                }
+            }
+            else
+            {
+                MainPage = new LoginPage();
+            }
+
         }
 
         protected override void OnStart()
@@ -66,22 +88,22 @@ namespace FarmTracker
             List<Category> categoryList = new List<Category>
             {
                 new Category{ Id = guids[0], Name = "Alive", EndPointFlag = false },
-                new Category{ Id = guids[1], Name = "Item", EndPointFlag = true, Pic = "item.png" },
+                new Category{ Id = guids[1], Name = "Item", EndPointFlag = true, Image = "item.png" },
 
-                new Category{ Id = guids[2], Name = "Plant", EndPointFlag = false, Pic = "animal.png", SuperCategoryId = guids[0] },
-                new Category{ Id = Guid.NewGuid(), Name = "Terrestrial", EndPointFlag = true, Pic = "Terrestrial.png", SuperCategoryId = guids[2] },
-                new Category{ Id = Guid.NewGuid(), Name = "Aquatic", EndPointFlag = true, Pic = "Aquatic.png", SuperCategoryId = guids[2] },
+                new Category{ Id = guids[2], Name = "Plant", EndPointFlag = false, Image = "animal.png", SuperCategoryId = guids[0] },
+                new Category{ Id = Guid.NewGuid(), Name = "Terrestrial", EndPointFlag = true, Image = "Terrestrial.png", SuperCategoryId = guids[2] },
+                new Category{ Id = Guid.NewGuid(), Name = "Aquatic", EndPointFlag = true, Image = "Aquatic.png", SuperCategoryId = guids[2] },
                 
                 new Category{ Id = guids[3], Name = "Animal", EndPointFlag = false, SuperCategoryId = guids[0] },
-                new Category{ Id = Guid.NewGuid(), Name = "Saltwater", EndPointFlag = true, Pic = "Saltwater.png", SuperCategoryId = guids[3] },
-                new Category{ Id = guids[4], Name = "Freshwater", EndPointFlag = false, SuperCategoryId = guids[3] },
+                new Category{ Id = Guid.NewGuid(), Name = "Saltwater", EndPointFlag = true, Image = "Saltwater.png", SuperCategoryId = guids[3] },
+                new Category{ Id = guids[4], Name = "Freshwater", EndPointFlag = false, SuperCategoryId = guids[3], Image = "Freshwater.jpg" },
                 new Category{ Id = guids[5], Name = "Cichlids", EndPointFlag = false, SuperCategoryId = guids[4] },
-                new Category{ Id = guids[6], Name = "Blue Dolphin", EndPointFlag = true, Pic = "animal.png", SuperCategoryId = guids[5] },
-                new Category{ Id = guids[7], Name = "Electric Yellow", EndPointFlag = true, Pic = "animal.png", SuperCategoryId = guids[5] },
-                new Category{ Id = guids[15], Name = "Angle", EndPointFlag = true, Pic = "Angle.png", SuperCategoryId = guids[5] },
+                new Category{ Id = guids[6], Name = "Blue Dolphin", EndPointFlag = true, Image = "animal.png", SuperCategoryId = guids[5] },
+                new Category{ Id = guids[7], Name = "Electric Yellow", EndPointFlag = true, Image = "animal.png", SuperCategoryId = guids[5] },
+                new Category{ Id = guids[15], Name = "Angle", EndPointFlag = true, Image = "Angle.png", SuperCategoryId = guids[5] },
                 new Category{ Id = guids[8], Name = "Livebearers", EndPointFlag = false, SuperCategoryId = guids[4] },
-                new Category{ Id = guids[9], Name = "Guppy", EndPointFlag = true, Pic = "Guppy.png", SuperCategoryId = guids[8] },
-                new Category{ Id = guids[14], Name = "Endler", EndPointFlag = true, Pic = "Endler.png", SuperCategoryId = guids[8] },
+                new Category{ Id = guids[9], Name = "Guppy", EndPointFlag = true, Image = "Guppy.png", SuperCategoryId = guids[8] },
+                new Category{ Id = guids[14], Name = "Endler", EndPointFlag = true, Image = "Endler.png", SuperCategoryId = guids[8] },
             };
             foreach (var item in categoryList)
             {
@@ -93,9 +115,9 @@ namespace FarmTracker
             propertyRepository.DeleteAll();
             List<Property> propertyList = new List<Property>
             {
-                new Property{ Id = guids[11], Name = "Cichlid Aquarium", Description = "Main Aquarium", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
-                new Property{ Id = guids[12], Name = "Quarantine Aquarium", Description = "Middle Aquarium", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
-                new Property{ Id = guids[13], Name = "Livebearer Aquarium", Description = "Middle Aquarium", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
+                new Property{ Id = guids[11], Name = "Cichlid Aquarium", Description = "Main Aquarium", Image="Cichlid.jpg", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
+                new Property{ Id = guids[12], Name = "Quarantine Aquarium", Description = "Middle Aquarium", Image="Quarantine.jpg", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
+                new Property{ Id = guids[13], Name = "Livebearer Aquarium", Description = "Middle Aquarium", Image="Livebearer.jpg", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
             };
             foreach (var item in propertyList)
             {

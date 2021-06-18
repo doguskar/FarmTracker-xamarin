@@ -2,13 +2,11 @@
 using FarmTracker.Model;
 using MvvmHelpers;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace FarmTracker.ModelView
+namespace FarmTracker.ViewModel
 {
     public class LoginViewModel: BaseViewModel
     {
@@ -71,7 +69,7 @@ namespace FarmTracker.ModelView
             if(user != null && user.Password == password)
             {
                 Preferences.Set("userId", user.Id.ToString());
-                App.Current.MainPage.Navigation.PopModalAsync();
+                App.Current.MainPage = new MasterDetailPage1();
             }
             else
             {

@@ -8,7 +8,7 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace FarmTracker.ModelView
+namespace FarmTracker.ViewModel
 {
     public class RegisterViewModel: BaseViewModel
     {
@@ -122,8 +122,7 @@ namespace FarmTracker.ModelView
                 if (user != null)
                 {
                     Preferences.Set("userId", user.Id.ToString());
-                    App.Current.MainPage.Navigation.PopModalAsync();
-                    App.Current.MainPage.Navigation.PopModalAsync();
+                    App.Current.MainPage = new MasterDetailPage1();
                 }
                 else
                 {

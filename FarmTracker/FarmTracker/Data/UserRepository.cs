@@ -59,8 +59,9 @@ namespace FarmTracker.Data
                     throw new Exception("Username is required");
                 if (string.IsNullOrEmpty(user.FullName))
                     throw new Exception("FullName is required");
-                
-                user.Id = Guid.NewGuid();
+
+                if (user.Id == null)
+                    user.Id = Guid.NewGuid();
                 result = con.Insert(user);
 
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, user.Email);

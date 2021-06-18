@@ -1,5 +1,4 @@
-﻿using FarmTracker.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace FarmTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
+    public partial class MainTabbedPage : TabbedPage
     {
-        public RegisterPage()
+        public MainTabbedPage()
         {
             InitializeComponent();
-            BindingContext = new RegisterViewModel();
         }
     }
 }

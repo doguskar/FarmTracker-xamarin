@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.MyFarmTabbedPage"
+             x:Class="FarmTracker.MainTabbedPage"
              xmlns:mypages="clr-namespace:FarmTracker;assembly=FarmTracker"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Children>
-        <mypages:MyFarm IconImageSource="Home.png" Title="Farm"/>
-        <mypages:Collaborators IconImageSource="users.png" Title="Collaborators"/>
-        <mypages:ItemsPage IconImageSource="settings.png" Title="Products"/>
+        <mypages:PropertiesPage IconImageSource="Home.png" Title="Property"/>
+        <mypages:PropertyDetail IconImageSource="document.png" Title="Property Details"/>
         <mypages:IncomeAndExpenses IconImageSource="money.png" Title="Income and Expenses"/>
+        <mypages:ItemsPage IconImageSource="settings.png" Title="Items"/>
     </TabbedPage.Children>
 </TabbedPage>

@@ -90,7 +90,8 @@ namespace FarmTracker.Data
                     }
                 }
 
-                entity.Id = Guid.NewGuid();
+                if (entity.Id == null)
+                    entity.Id = Guid.NewGuid();
                 result = con.Insert(entity);
 
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, entity.Name);
