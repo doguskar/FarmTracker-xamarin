@@ -17,7 +17,7 @@ namespace FarmTracker.Data
         public DetailRepository(string dbPath)
         {
             con = new SQLiteConnection(dbPath);
-            con.CreateTable<Property>();
+            con.CreateTable<Detail>();
 
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             propertyRepository = new PropertyRepository(System.IO.Path.Combine(path, "farmTracker"));

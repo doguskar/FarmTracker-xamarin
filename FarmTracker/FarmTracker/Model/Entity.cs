@@ -17,6 +17,7 @@ namespace FarmTracker.Model
         public decimal SoldPrice { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public EntityType? EntityType { get; set; }
+        public string Image { get; set; }
         public Guid CategoryId { get; set; }
         public Guid OwnerId { get; set; }
     }

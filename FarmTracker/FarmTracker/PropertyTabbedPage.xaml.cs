@@ -1,5 +1,4 @@
-﻿using FarmTracker.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace FarmTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PropertyPage : ContentPage
+    public partial class PropertyTabbedPage : TabbedPage
     {
-        public PropertyPage()
+        public PropertyTabbedPage()
         {
             InitializeComponent();
         }

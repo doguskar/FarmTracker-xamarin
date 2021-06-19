@@ -16,8 +16,6 @@ namespace FarmTracker.ViewModel
 
         private PropertyRepository propertyRepository;
 
-        ICommand PropertyTabbedCommand;
-
         public PropertiesViewModel()
         {
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
@@ -32,9 +30,6 @@ namespace FarmTracker.ViewModel
                     Properties = new ObservableRangeCollection<Property>(propertyList);
                 }
             }
-
-            //PropertyTabbedCommand = new Command(PropertyTabbed);
-
         }
 
         public Property SelectedProperty
@@ -44,7 +39,8 @@ namespace FarmTracker.ViewModel
             {
                 if (value != null)
                 {
-                    App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new PropertyPage()));
+                    Preferences.Set("currentPropertyId", value.Id.ToString());
+                    App.Current.MainPage.Navigation.PushModalAsync(new PropertyTabbedPage());
                 }
                 selectedProperty = value;
                 OnPropertyChanged();

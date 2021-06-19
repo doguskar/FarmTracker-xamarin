@@ -90,7 +90,7 @@ namespace FarmTracker
                 new Category{ Id = guids[0], Name = "Alive", EndPointFlag = false },
                 new Category{ Id = guids[1], Name = "Item", EndPointFlag = true, Image = "item.png" },
 
-                new Category{ Id = guids[2], Name = "Plant", EndPointFlag = false, Image = "animal.png", SuperCategoryId = guids[0] },
+                new Category{ Id = guids[2], Name = "Plant", EndPointFlag = false, Image = "plant_property1.jpg", SuperCategoryId = guids[0] },
                 new Category{ Id = Guid.NewGuid(), Name = "Terrestrial", EndPointFlag = true, Image = "Terrestrial.png", SuperCategoryId = guids[2] },
                 new Category{ Id = Guid.NewGuid(), Name = "Aquatic", EndPointFlag = true, Image = "Aquatic.png", SuperCategoryId = guids[2] },
                 
@@ -98,11 +98,11 @@ namespace FarmTracker
                 new Category{ Id = Guid.NewGuid(), Name = "Saltwater", EndPointFlag = true, Image = "Saltwater.png", SuperCategoryId = guids[3] },
                 new Category{ Id = guids[4], Name = "Freshwater", EndPointFlag = false, SuperCategoryId = guids[3], Image = "Freshwater.jpg" },
                 new Category{ Id = guids[5], Name = "Cichlids", EndPointFlag = false, SuperCategoryId = guids[4] },
-                new Category{ Id = guids[6], Name = "Blue Dolphin", EndPointFlag = true, Image = "animal.png", SuperCategoryId = guids[5] },
-                new Category{ Id = guids[7], Name = "Electric Yellow", EndPointFlag = true, Image = "animal.png", SuperCategoryId = guids[5] },
-                new Category{ Id = guids[15], Name = "Angle", EndPointFlag = true, Image = "Angle.png", SuperCategoryId = guids[5] },
+                new Category{ Id = guids[6], Name = "Blue Dolphin", EndPointFlag = true, Image = "blue_dolphin.jpg", SuperCategoryId = guids[5] },
+                new Category{ Id = guids[7], Name = "Electric Yellow", EndPointFlag = true, Image = "ey.jpg", SuperCategoryId = guids[5] },
+                new Category{ Id = guids[15], Name = "Angle", EndPointFlag = true, Image = "bd.jpg", SuperCategoryId = guids[5] },
                 new Category{ Id = guids[8], Name = "Livebearers", EndPointFlag = false, SuperCategoryId = guids[4] },
-                new Category{ Id = guids[9], Name = "Guppy", EndPointFlag = true, Image = "Guppy.png", SuperCategoryId = guids[8] },
+                new Category{ Id = guids[9], Name = "Guppy", EndPointFlag = true, Image = "guppy.jpg", SuperCategoryId = guids[8] },
                 new Category{ Id = guids[14], Name = "Endler", EndPointFlag = true, Image = "Endler.png", SuperCategoryId = guids[8] },
             };
             foreach (var item in categoryList)
@@ -159,8 +159,11 @@ namespace FarmTracker
 
                 new Detail{ Id = Guid.NewGuid(), Name = "Patient", Description="Not eating", DetailType = DetailType.Entity, OwnerId = guids[16]},
 
+                new Detail{ Id = Guid.NewGuid(), Name = "Spraying", Description="Methylene blue", Date = DateTime.UtcNow, RemainderDate = DateTime.UtcNow.AddDays(10), DetailType = DetailType.Property, OwnerId = guids[11]},
                 new Detail{ Id = Guid.NewGuid(), Name = "Water change", Description="weakly %30 water change", Date = DateTime.UtcNow, DetailType = DetailType.Property, OwnerId = guids[11]},
+                new Detail{ Id = Guid.NewGuid(), Name = "New Airpump", Description="Eheim 400", Cost=100, IncomeFlag = false, Date = DateTime.UtcNow, DetailType = DetailType.Property, OwnerId = guids[11]},
                 new Detail{ Id = Guid.NewGuid(), Name = "Water change", Description="weakly %25 water change", Date = DateTime.UtcNow.AddDays(-7), DetailType = DetailType.Property, OwnerId = guids[11]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Fish sold", Description="10 baby blue dolphine is sold", Cost = 20, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-10), DetailType = DetailType.Property, OwnerId = guids[11]},
                 new Detail{ Id = Guid.NewGuid(), Name = "Water change", Description="weakly %50 water change", Date = DateTime.UtcNow.AddDays(-14), DetailType = DetailType.Property, OwnerId = guids[11]},
 
             };

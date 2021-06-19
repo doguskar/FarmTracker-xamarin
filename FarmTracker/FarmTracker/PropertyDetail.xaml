@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.PropertyDetail">
+             x:Class="FarmTracker.PropertyDetail"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:PropertyDetailsViewModel" >
+
+    <ContentPage.BindingContext>
+        <viewmodels:PropertyDetailsViewModel />
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout
         Padding="10"
@@ -12,7 +21,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <ListView  x:Name="lvProperyDetails" HasUnevenRows="True" Grid.RowSpan="2">
+                <ListView  ItemsSource="{Binding Details}"  HasUnevenRows="True" Grid.RowSpan="2">
                     <ListView.Header>
                         <ContentView>
                             <Label 
@@ -23,8 +32,8 @@
                         </ContentView>
                     </ListView.Header>
                     <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell  Height="100">
+                        <DataTemplate x:DataType="model:Detail">
+                            <ViewCell  Height="120">
                                 <Frame  HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -34,9 +43,10 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition/>
                                             <RowDefinition/>
+                                            <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Image 
-                                            Grid.RowSpan="2"
+                                            Grid.RowSpan="3"
                                             Source="{Binding Image}"  />
                                         <Label
                                             Grid.Column="1"
@@ -48,9 +58,17 @@
                                         <Label
                                             Grid.Column="1"
                                             Grid.Row="1"
+                                            Text="{Binding Description}"
+                                            TextColor="#808080"
+                                            FontSize="Small"
+                                            VerticalTextAlignment="End"
+                                            />
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="2"
                                             Text="{Binding Date}"
                                             TextColor="#808080"
-                                            FontSize="Medium"
+                                            FontSize="Small"
                                             VerticalTextAlignment="Start"
                                             />
                                     </Grid>

@@ -1,7 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.PropertyPage">
+             x:Class="FarmTracker.PropertyPage"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:PropertyViewModel" >
+
+    <ContentPage.BindingContext>
+        <viewmodels:PropertyViewModel />
+    </ContentPage.BindingContext>
+
+
     <ContentPage.Content>
         <StackLayout
         Padding="10"
@@ -12,7 +22,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <ListView  x:Name="lvEntities" HasUnevenRows="True" Grid.RowSpan="2">
+                <ListView ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity, Mode=TwoWay}" HasUnevenRows="True" Grid.RowSpan="2">
                     <ListView.Header>
                         <ContentView>
                             <Label 
@@ -23,12 +33,11 @@
                         </ContentView>
                     </ListView.Header>
                     <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell  Height="250" Tapped="ViewCell_Tapped">
+                        <DataTemplate x:DataType="model:Entity">
+                            <ViewCell  Height="250">
                                 <Grid Margin="0,10,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10*" />
-                                        <RowDefinition Height="2*"/>
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
@@ -45,15 +54,8 @@
                                     VerticalTextAlignment="Center"
                                     />
                                     <Label
-                                    Text="{Binding Id}"
-                                    Grid.Row="2"
-                                    FontSize="Small"
-                                    TextColor="#808080"
-                                    VerticalTextAlignment="End"
-                                     />
-                                    <Label
                                     Text="{Binding LastModifiedDate}"
-                                    Grid.Row="3"
+                                    Grid.Row="2"
                                     FontSize="Small"
                                     TextColor="#808080"
                                     VerticalTextAlignment="Start"
