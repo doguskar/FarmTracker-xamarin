@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using FarmTracker.Model;
 using SQLite;
+using Xamarin.Essentials;
 
 namespace FarmTracker.Data
 {
@@ -44,7 +45,10 @@ namespace FarmTracker.Data
         {
             try
             {
+                List<Property> propertyList2 = con.Table<Property>()
+                    .ToList();
                 List<Property> propertyList = con.Table<Property>().Where(x => x.UserId.Equals(guid))
+                    .OrderByDescending(x => x.LastModifiedDate)
                     .ToList();
                 foreach (var item in propertyList)
                 {
@@ -68,13 +72,25 @@ namespace FarmTracker.Data
                     throw new Exception("Property can not be null!");
                 else if (String.IsNullOrWhiteSpace(item.Name))
                     throw new Exception("Name can not be null!");
-                else if (item.UserId == null)
-                    throw new Exception("UserId can not be null!");
 
                 User user = userRepository.GetUserById(item.UserId);
                 if (user == null)
+                {
+                    string userId = Preferences.Get("userId", null);
+                    if (!string.IsNullOrWhiteSpace(userId))
+                    {
+                        user = userRepository.GetUserById(new Guid(userId));
+                    }
+                }
+                if (user == null)
                     throw new Exception(string.Format("User is not found! [UserId: {0}", item.UserId));
-               
+
+                Category category = categoryRepository.GetCategoryById(item.CategoryId);
+                if (category == null)
+                    throw new Exception(string.Format("Category is not found! [UserId: {0}", item.UserId));
+
+                item.UserId = user.Id;
+                item.LastModifiedDate = DateTime.UtcNow;
                 if (item.Id == null)
                     item.Id = Guid.NewGuid();
                 result = con.Insert(item);

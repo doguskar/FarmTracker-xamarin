@@ -17,11 +17,21 @@
         >
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
+                    <RowDefinition Height="8*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                <ListView SelectedItem="{Binding SelectedProperty, Mode=TwoWay}" ItemsSource="{Binding Properties}" HasUnevenRows="True" Grid.RowSpan="2">
+                <ListView 
+                    SelectedItem="{Binding SelectedProperty, Mode=TwoWay}" 
+                    ItemsSource="{Binding Properties}"
+                    RefreshCommand="{Binding PropertiesRefreshCommand}"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsPropertiesRefreshing}"
+                    HasUnevenRows="True" Grid.RowSpan="2" Grid.ColumnSpan="2">
                     <ListView.Header>
                         <ContentView>
                             <Label 
@@ -74,25 +84,26 @@
 
                 <Frame 
                     Grid.Row="1"
+                    Grid.Column="1"
                     VerticalOptions="End"
                     HorizontalOptions="End"
                     BackgroundColor="#66AF33"
                     CornerRadius="100"
-                    WidthRequest="24"
-                    HeightRequest="24"
-                    Margin="10"
+                    Margin="0,0,10,10"
                     >
                 </Frame>
-                <Label
+                <Button
+                    Command="{Binding AddPropertyCommand}"
                     Grid.Row="1"
-                    VerticalOptions="End"
-                    HorizontalOptions="End"
+                    Grid.Column="1"
                     Text="+"
                     TextColor="#fff"
-                    FontSize="40"
-                    HorizontalTextAlignment="Center"
-                    Margin="0,0,30,17"
-                     />
+                    BackgroundColor="Transparent"
+                    FontSize="32"
+                    Margin="0,0,5,5"
+                    Padding="0"
+                    />
+                
             </Grid>
         </StackLayout>
     </ContentPage.Content>

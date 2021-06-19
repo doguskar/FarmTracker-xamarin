@@ -13,7 +13,7 @@ namespace FarmTracker
         private UserRepository userRepository;
         public App()
         {
-            Preferences.Remove("initialize");
+            //Preferences.Remove("initialize");
             bool initialize = Preferences.Get("initialize", true);
             if (initialize)
             {
@@ -97,8 +97,10 @@ namespace FarmTracker
                 new Category{ Id = Guid.NewGuid(), Name = "Aquatic", EndPointFlag = true, Image = "Aquatic.png", SuperCategoryId = guids[2] },
                 
                 new Category{ Id = guids[3], Name = "Animal", EndPointFlag = false, SuperCategoryId = guids[0] },
-                new Category{ Id = Guid.NewGuid(), Name = "Saltwater", EndPointFlag = true, Image = "Saltwater.png", SuperCategoryId = guids[3] },
-                new Category{ Id = guids[4], Name = "Freshwater", EndPointFlag = false, SuperCategoryId = guids[3], Image = "Freshwater.jpg" },
+                new Category{ Id = Guid.NewGuid(), Name = "Terrestrial", EndPointFlag = true, Image = "Terrestrial.png", SuperCategoryId = guids[3] },
+                new Category{ Id = guids[23], Name = "Aquatic", EndPointFlag = false, SuperCategoryId = guids[3] },
+                new Category{ Id = Guid.NewGuid(), Name = "Saltwater", EndPointFlag = true, Image = "Saltwater.png", SuperCategoryId = guids[23] },
+                new Category{ Id = guids[4], Name = "Freshwater", EndPointFlag = false, SuperCategoryId = guids[23], Image = "Freshwater.jpg" },
                 new Category{ Id = guids[5], Name = "Cichlids", EndPointFlag = false, SuperCategoryId = guids[4] },
                 new Category{ Id = guids[6], Name = "Blue Dolphin", EndPointFlag = true, Image = "blue_dolphin.jpg", SuperCategoryId = guids[5] },
                 new Category{ Id = guids[7], Name = "Electric Yellow", EndPointFlag = true, Image = "ey.jpg", SuperCategoryId = guids[5] },
@@ -131,9 +133,9 @@ namespace FarmTracker
             propertyRepository.DeleteAll();
             List<Property> propertyList = new List<Property>
             {
-                new Property{ Id = guids[11], Name = "Cichlid Aquarium", Description = "Main Aquarium", Image="Cichlid.jpg", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
                 new Property{ Id = guids[12], Name = "Quarantine Aquarium", Description = "Middle Aquarium", Image="Quarantine.jpg", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
                 new Property{ Id = guids[13], Name = "Livebearer Aquarium", Description = "Middle Aquarium", Image="Livebearer.jpg", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
+                new Property{ Id = guids[11], Name = "Cichlid Aquarium", Description = "Main Aquarium", Image="Cichlid.jpg", CategoryId = guids[4], UserId = guids[10], LastModifiedDate = DateTime.UtcNow },
             };
             foreach (var item in propertyList)
             {

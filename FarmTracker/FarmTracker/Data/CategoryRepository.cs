@@ -29,6 +29,34 @@ namespace FarmTracker.Data
             }
             return null;
         }
+        public Category GetCategoryByName(string name)
+        {
+            try
+            {
+                Category category = con.Table<Category>().Where(x => x.Name.Equals(name))
+                    .FirstOrDefault();
+                return category;
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+            return null;
+        }
+        public List<Category> GetSubCategoryById(Guid guid)
+        {
+            try
+            {
+                List<Category> categories = con.Table<Category>().Where(x => x.SuperCategoryId.Equals(guid))
+                    .ToList();
+                return categories;
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+            return null;
+        }
         public int InsertCategory(Category item)
         {
             int result = 0;

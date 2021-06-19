@@ -13,8 +13,12 @@ namespace FarmTracker.ViewModel
     {
         public ObservableRangeCollection<Property> Properties { get; set; }
         private Property selectedProperty;
+        private bool isPropertiesRefreshing;
 
         private PropertyRepository propertyRepository;
+
+        public ICommand AddPropertyCommand { get; set; }
+        public ICommand PropertiesRefreshCommand { get; set; }
 
         public PropertiesViewModel()
         {
@@ -30,6 +34,9 @@ namespace FarmTracker.ViewModel
                     Properties = new ObservableRangeCollection<Property>(propertyList);
                 }
             }
+
+            AddPropertyCommand = new Command(AddProperty);
+            PropertiesRefreshCommand = new Command(PropertiesRefresh);
         }
 
         public Property SelectedProperty
@@ -45,6 +52,38 @@ namespace FarmTracker.ViewModel
                 selectedProperty = null;
                 OnPropertyChanged();
             }
+        }
+
+        public bool IsPropertiesRefreshing
+        {
+            get => isPropertiesRefreshing;
+            set
+            {
+                isPropertiesRefreshing = value;
+                OnPropertyChanged();
+            }
+        }
+        public void AddProperty()
+        {
+            App.Current.MainPage.Navigation.PushModalAsync(new PropertyFormPage());
+        }
+        public void PropertiesRefresh()
+        {
+            IsPropertiesRefreshing = true;
+            string userId = Preferences.Get("userId", null);
+            if (!string.IsNullOrWhiteSpace(userId))
+            {
+                List<Property> propertyList = propertyRepository.GetPropertiesByUserId(new Guid(userId));
+                if (propertyList != null)
+                {
+                    Properties.Clear();
+                    foreach (var item in propertyList)
+                    {
+                        Properties.Add(item);
+                    }
+                }
+            }
+            IsPropertiesRefreshing = false;
         }
 
 
