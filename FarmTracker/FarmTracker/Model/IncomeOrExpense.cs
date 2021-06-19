@@ -12,5 +12,6 @@ namespace FarmTracker.Model
         public DateTime Date { get; set; }
         public bool IncomeFlag { get; set; }
         public Guid UserId { get; set; }
+        public string Image { get; set; }
     }
 }

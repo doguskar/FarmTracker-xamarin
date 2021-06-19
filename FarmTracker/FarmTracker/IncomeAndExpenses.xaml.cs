@@ -16,7 +16,6 @@ namespace FarmTracker
         public IncomeAndExpenses()
         {
             InitializeComponent();
-            //lvIncomeAndExpenses.ItemsSource = Repository.IncomeAndExpenses;
         }
     }
 }

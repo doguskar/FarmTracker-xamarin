@@ -16,7 +16,7 @@ namespace FarmTracker.Data
         public IncomeOrExpenseRepository(string dbPath)
         {
             con = new SQLiteConnection(dbPath);
-            con.CreateTable<Property>();
+            con.CreateTable<IncomeOrExpense>();
 
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             userRepository = new UserRepository(System.IO.Path.Combine(path, "farmTracker"));

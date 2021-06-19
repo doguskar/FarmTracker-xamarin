@@ -1,7 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.IncomeAndExpenses">
+             x:Class="FarmTracker.IncomeAndExpenses"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:IncomeAndExpensesViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:IncomeAndExpensesViewModel />
+    </ContentPage.BindingContext>
+
+
+
     <ContentPage.Content>
         <StackLayout
         Padding="10"
@@ -12,7 +23,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <ListView  x:Name="lvIncomeAndExpenses" HasUnevenRows="True" Grid.RowSpan="2">
+                <ListView ItemsSource="{Binding IncomeOrExpenses}" HasUnevenRows="True" Grid.RowSpan="2">
                     <ListView.Header>
                         <ContentView>
                             <Label 
@@ -23,7 +34,7 @@
                         </ContentView>
                     </ListView.Header>
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="model:IncomeOrExpense">
                             <ViewCell  Height="60">
                                 <Frame Padding="10,0,10,0" HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
                                     <Grid>
