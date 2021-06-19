@@ -1,125 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.EntityPage">
+             x:Class="FarmTracker.EntityPage"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:EntityViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:EntityViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="250"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Image 
                 Aspect="AspectFill"
-                Source="guppy.jpg"/>
+                Source="{Binding Entity.Image}"/>
             <Label
-                Margin="10"
+                Margin="10,0,10,0"
                 Grid.Row="1"
-                Text="Guppy"
+                Text="{Binding Entity.Name}"
                 FontSize="Title"
                 TextColor="#0e639c"
                 VerticalOptions="Center"
                 />
             <ScrollView Margin="10" Grid.Row="2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-
+                <StackLayout x:Name="MainStackLayout">
                     <Label
-                        Text="Heath:"
-                        FontSize="Medium"
-                        TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
+                    Text="{Binding Entity.Description}"
+                    FontSize="Medium"
+                    TextColor="#000"
+                    Margin="0,0,0,10"
+                    />
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                        Text="Count:"
+                        FontSize="Subtitle"
+                        TextColor="#000"
                         />
-                    <Label
-                        Grid.Column="1"
-                        Text="Healty"
-                        FontSize="Medium"
-                        TextColor="#3F9704"
-                        Margin="0,5,0,5"
+                        <Label
+                        Text="{Binding Entity.Count}"
+                        FontSize="Subtitle"
+                        TextColor="#606060"
                         />
-                    <Label
-                        Grid.Row="1"
-                        Text="Gender:"
-                        FontSize="Medium"
-                        TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Text="Male"
-                        FontSize="Medium"
-                        TextColor="#0e639c"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="2"
-                        Text="Height:"
-                        FontSize="Medium"
-                        TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Text="3cm"
-                        FontSize="Medium"
-                        TextColor="#808080"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="3"
-                        Text="Stud:"
-                        FontSize="Medium"
-                        TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Text="Yes"
-                        FontSize="Medium"
-                        TextColor="#808080"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="4"
-                        Text="Birth Date:"
-                        FontSize="Medium"
-                        TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        Text="2020-05-01"
-                        FontSize="Medium"
-                        TextColor="#808080"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="5"
-                        Text="Last Modified:"
-                        FontSize="Medium"
-                        TextColor="#1e1e1e"
-                        Margin="0,5,0,5"
-                        />
-                    <Label
-                        Grid.Row="5"
-                        Grid.Column="1"
-                        Text="2021-01-01"
-                        FontSize="Medium"
-                        TextColor="#808080"
-                        Margin="0,5,0,5"
-                        />
-                    
-                </Grid>
+                    </StackLayout>
+                </StackLayout>
             </ScrollView>
         </Grid>
     </ContentPage.Content>

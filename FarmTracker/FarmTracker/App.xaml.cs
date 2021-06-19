@@ -13,7 +13,7 @@ namespace FarmTracker
         private UserRepository userRepository;
         public App()
         {
-            Preferences.Remove("initialize");
+            //Preferences.Remove("initialize");
             bool initialize = Preferences.Get("initialize", true);
             if (initialize)
             {
@@ -62,13 +62,15 @@ namespace FarmTracker
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             UserRepository userRepository = new UserRepository(System.IO.Path.Combine(path, "farmTracker"));
             CategoryRepository categoryRepository = new CategoryRepository(System.IO.Path.Combine(path, "farmTracker"));
+            CategoryPropertyRepository categoryPropertyRepository = new CategoryPropertyRepository(System.IO.Path.Combine(path, "farmTracker"));
             PropertyRepository propertyRepository = new PropertyRepository(System.IO.Path.Combine(path, "farmTracker"));
             EntityRepository entityRepository = new EntityRepository(System.IO.Path.Combine(path, "farmTracker"));
+            CategoryProperty2EntityRepository categoryProperty2EntityRepository = new CategoryProperty2EntityRepository(System.IO.Path.Combine(path, "farmTracker"));
             DetailRepository detailRepository = new DetailRepository(System.IO.Path.Combine(path, "farmTracker"));
             IncomeOrExpenseRepository incomeOrExpenseRepository= new IncomeOrExpenseRepository(System.IO.Path.Combine(path, "farmTracker"));
 
             List<Guid> guids = new List<Guid>();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 30; i++)
                 guids.Add(Guid.NewGuid());
 
             /* User TABLE */
@@ -111,6 +113,20 @@ namespace FarmTracker
             }
             /* Category TABLE END*/
 
+            /* Category Property TABLE */
+            categoryPropertyRepository.DeleteAll();
+            List<CategoryProperty> categoryPropertyList = new List<CategoryProperty>
+            {
+                new CategoryProperty{ Id = guids[20], Name = "Birth Date", CategoryId = guids[0]},
+                new CategoryProperty{ Id = guids[21], Name = "Health", CategoryId = guids[0]},
+                new CategoryProperty{ Id = guids[22], Name = "Height", CategoryId = guids[3]},
+            };
+            foreach (var item in categoryPropertyList)
+            {
+                categoryPropertyRepository.InsertCategoryProperty(item);
+            }
+            /* Category Property TABLE END*/
+
             /* Property TABLE */
             propertyRepository.DeleteAll();
             List<Property> propertyList = new List<Property>
@@ -129,8 +145,8 @@ namespace FarmTracker
             entityRepository.DeleteAll();
             List<Entity> entityList = new List<Entity>
             {
-                new Entity{ Id = guids[16], Name = "Male Blue Dolphin", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = guids[17], Name = "Female Blue Dolphin 1", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = guids[16], Name = "Male Blue Dolphin", Description = "17cm Male Blue Dolphin", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = guids[17], Name = "Female Blue Dolphin 1", Description = "13cm Female Blue Dolphin 1", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = guids[18], Name = "Female Blue Dolphin 2", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow 2", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
@@ -149,6 +165,24 @@ namespace FarmTracker
                 entityRepository.InsertEntity(item);
             }
             /* Entity TABLE END*/
+
+            /* CategoryProperty2EntityRepository TABLE */
+            categoryProperty2EntityRepository.DeleteAll();
+            List<CategoryProperty2Entity> categoryProperty2EntityList = new List<CategoryProperty2Entity>
+            {
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[20], EntityId = guids[16], Value = "01/07/2017" },
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[21], EntityId = guids[16], Value = "Good" },
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[22], EntityId = guids[16], Value = "17cm" },
+
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[20], EntityId = guids[17], Value = "01/07/2017" },
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[21], EntityId = guids[17], Value = "Good" },
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[22], EntityId = guids[17], Value = "13cm" },
+            };
+            foreach (var item in categoryProperty2EntityList)
+            {
+                categoryProperty2EntityRepository.InsertCategoryProperty2Entity(item);
+            }
+            /* CategoryProperty2EntityRepository TABLE END*/
 
             /* Detail TABLE END*/
             detailRepository.DeleteAll();

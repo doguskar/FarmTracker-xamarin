@@ -42,7 +42,7 @@ namespace FarmTracker.ViewModel
                     Preferences.Set("currentPropertyId", value.Id.ToString());
                     App.Current.MainPage.Navigation.PushModalAsync(new PropertyTabbedPage());
                 }
-                selectedProperty = value;
+                selectedProperty = null;
                 OnPropertyChanged();
             }
         }

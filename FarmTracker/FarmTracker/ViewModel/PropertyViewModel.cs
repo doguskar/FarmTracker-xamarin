@@ -48,7 +48,7 @@ namespace FarmTracker.ViewModel
                     Preferences.Set("currentEntityId", value.Id.ToString());
                     App.Current.MainPage.Navigation.PushModalAsync(new EntityTabbedPage());
                 }
-                selectedEntity = value;
+                selectedEntity = null;
                 OnPropertyChanged();
             }
         }
