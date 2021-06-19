@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FarmTracker.ItemsPage">
+             x:Class="FarmTracker.ItemsPage"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:ItemsViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ItemsViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout
         Padding="10"
@@ -12,7 +21,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <ListView  x:Name="lvProducts" HasUnevenRows="True" Grid.RowSpan="2">
+                <ListView ItemsSource="{Binding Entities}" HasUnevenRows="True" Grid.RowSpan="2">
                     <ListView.Header>
                         <ContentView>
                             <Label 
@@ -23,24 +32,35 @@
                         </ContentView>
                     </ListView.Header>
                     <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell  Height="60">
+                        <DataTemplate x:DataType="model:Entity">
+                            <ViewCell  Height="75">
                                 <Frame Padding="10,0,10,0" HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
                                             <ColumnDefinition Width="10*"/>
                                         </Grid.ColumnDefinitions>
-
-                                        <Image
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Image 
+                                            Grid.RowSpan="2"
                                             Source="settings.jpg"  />
-
                                         <Label
                                             Grid.Column="1"
                                             Text="{Binding Name}"
                                             TextColor="#1e1e1e"
                                             FontSize="Medium"
-                                            VerticalTextAlignment="Center"
+                                            VerticalTextAlignment="End"
+                                            />
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Text="{Binding Description}"
+                                            TextColor="#808080"
+                                            FontSize="Small"
+                                            VerticalTextAlignment="Start"
                                             />
                                     </Grid>
                                 </Frame>

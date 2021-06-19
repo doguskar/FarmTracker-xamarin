@@ -10,9 +10,7 @@
     <ContentPage.BindingContext>
         <viewmodels:IncomeAndExpensesViewModel />
     </ContentPage.BindingContext>
-
-
-
+    
     <ContentPage.Content>
         <StackLayout
         Padding="10"
@@ -35,32 +33,50 @@
                     </ListView.Header>
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:IncomeOrExpense">
-                            <ViewCell  Height="60">
+                            <ViewCell  Height="75">
                                 <Frame Padding="10,0,10,0" HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
-                                            <ColumnDefinition Width="7*"/>
-                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
-
-                                        <Image
-                                            Source="{Binding Image}"  />
-
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Image 
+                                            Grid.RowSpan="2"
+                                            Source="{Binding Image}"/>
                                         <Label
                                             Grid.Column="1"
                                             Text="{Binding Name}"
                                             TextColor="#1e1e1e"
                                             FontSize="Medium"
-                                            VerticalTextAlignment="Center"
+                                            VerticalTextAlignment="End"
                                             />
                                         <Label
                                             Grid.Column="2"
-                                            Text="{Binding Cost}"
+                                            Grid.RowSpan="2"
                                             TextColor="#808080"
                                             FontSize="Medium"
                                             VerticalTextAlignment="Center"
-                                            HorizontalOptions="End"
+                                            HorizontalOptions="End">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Cost}"/>
+                                                    <Span Text=" $"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="2"
+                                            Text="{Binding Description}"
+                                            TextColor="#808080"
+                                            FontSize="Small"
+                                            VerticalTextAlignment="Start"
                                             />
                                     </Grid>
                                 </Frame>

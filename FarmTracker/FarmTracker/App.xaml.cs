@@ -13,7 +13,7 @@ namespace FarmTracker
         private UserRepository userRepository;
         public App()
         {
-            //Preferences.Remove("initialize");
+            Preferences.Remove("initialize");
             bool initialize = Preferences.Get("initialize", true);
             if (initialize)
             {
@@ -88,7 +88,7 @@ namespace FarmTracker
             List<Category> categoryList = new List<Category>
             {
                 new Category{ Id = guids[0], Name = "Alive", EndPointFlag = false },
-                new Category{ Id = guids[1], Name = "Item", EndPointFlag = true, Image = "item.png" },
+                new Category{ Id = guids[1], Name = "Item", EndPointFlag = true, Image = "settings.png" },
 
                 new Category{ Id = guids[2], Name = "Plant", EndPointFlag = false, Image = "plant_property1.jpg", SuperCategoryId = guids[0] },
                 new Category{ Id = Guid.NewGuid(), Name = "Terrestrial", EndPointFlag = true, Image = "Terrestrial.png", SuperCategoryId = guids[2] },
@@ -177,11 +177,11 @@ namespace FarmTracker
             incomeOrExpenseRepository.DeleteAll();
             List<IncomeOrExpense> incomeAndExpensesList = new List<IncomeOrExpense>
             {
-                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Income 1", Cost = 100, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-10).AddHours(-5), UserId = guids[10] },
-                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Income 2", Cost = 50, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-7).AddHours(-12), UserId = guids[10] },
-                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Expense 1", Cost = 75, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-5).AddHours(-2), UserId = guids[10] },
-                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Income 3", Cost = 30, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-8).AddHours(-1), UserId = guids[10] },
-                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Expense 2", Cost = 55, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-2).AddHours(-2), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Fish", Description = "10 fish is sold", Cost = 100, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-10).AddHours(-5), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Fish food", Description = "Tetra Discus", Cost = 275, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-5).AddHours(-2), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Plant", Description = "some plant sold", Cost = 50, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-7).AddHours(-12), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Medicine", Description = "Methylene blue", Cost = 55, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-2).AddHours(-2), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Item", Description = "Airpump", Cost = 155, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-2).AddHours(-2), UserId = guids[10] },
             };
             foreach (var item in incomeAndExpensesList)
             {
