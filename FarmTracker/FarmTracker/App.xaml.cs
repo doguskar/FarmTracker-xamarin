@@ -13,7 +13,7 @@ namespace FarmTracker
         private UserRepository userRepository;
         public App()
         {
-            //Preferences.Remove("initialize");
+            Preferences.Remove("initialize");
             bool initialize = Preferences.Get("initialize", true);
             if (initialize)
             {
@@ -105,7 +105,7 @@ namespace FarmTracker
                 new Category{ Id = guids[15], Name = "Angle", EndPointFlag = true, Image = "bd.jpg", SuperCategoryId = guids[5] },
                 new Category{ Id = guids[8], Name = "Livebearers", EndPointFlag = false, SuperCategoryId = guids[4] },
                 new Category{ Id = guids[9], Name = "Guppy", EndPointFlag = true, Image = "guppy.jpg", SuperCategoryId = guids[8] },
-                new Category{ Id = guids[14], Name = "Endler", EndPointFlag = true, Image = "Endler.png", SuperCategoryId = guids[8] },
+                new Category{ Id = guids[14], Name = "Endler", EndPointFlag = true, Image = "Endler.jpg", SuperCategoryId = guids[8] },
             };
             foreach (var item in categoryList)
             {
@@ -147,13 +147,13 @@ namespace FarmTracker
             {
                 new Entity{ Id = guids[16], Name = "Male Blue Dolphin", Description = "17cm Male Blue Dolphin", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = guids[17], Name = "Female Blue Dolphin 1", Description = "13cm Female Blue Dolphin 1", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = guids[18], Name = "Female Blue Dolphin 2", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow 2", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = Guid.NewGuid(), Name = "Blue Dolphin", Count = 100, Cost = 0, CategoryId = guids[6], OwnerId = guids[12], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = Guid.NewGuid(), Name = "Angle", Count = 1, Cost = 0, CategoryId = guids[15], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = Guid.NewGuid(), Name = "Guppy", Count = 5, Cost = 0, CategoryId = guids[9], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = Guid.NewGuid(), Name = "Endler", Count = 5, Cost = 0, CategoryId = guids[14], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = guids[18], Name = "Female Blue Dolphin 2", Description = "Female Blue Dolphin 2", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow", Description = "Electric Yellow", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow 2", Description = "Electric Yellow 2", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = Guid.NewGuid(), Name = "Blue Dolphin", Description = "Blue Dolphin", Count = 100, Cost = 0, CategoryId = guids[6], OwnerId = guids[12], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = Guid.NewGuid(), Name = "Angle", Description = "Angle", Count = 1, Cost = 0, CategoryId = guids[15], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = Guid.NewGuid(), Name = "Guppy", Description = "Guppy", Count = 5, Cost = 0, CategoryId = guids[9], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = Guid.NewGuid(), Name = "Endler", Description = "Endler", Count = 5, Cost = 0, CategoryId = guids[14], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
 
                 new Entity{ Id = Guid.NewGuid(), Name = "Aquarium", Description = "120x60x50 450Lt", Count = 1, CategoryId = guids[1], EntityType = EntityType.Item, OwnerId = guids[10] },
                 new Entity{ Id = Guid.NewGuid(), Name = "Airpumnp", Description = "Eheim 400 airpump", Count = 1, CategoryId = guids[1], EntityType = EntityType.Item, OwnerId = guids[10] },
@@ -177,6 +177,10 @@ namespace FarmTracker
                 new CategoryProperty2Entity{ CategoryPropertyId = guids[20], EntityId = guids[17], Value = "01/07/2017" },
                 new CategoryProperty2Entity{ CategoryPropertyId = guids[21], EntityId = guids[17], Value = "Good" },
                 new CategoryProperty2Entity{ CategoryPropertyId = guids[22], EntityId = guids[17], Value = "13cm" },
+
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[20], EntityId = guids[18], Value = "01/07/2017" },
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[21], EntityId = guids[18], Value = "Good" },
+                new CategoryProperty2Entity{ CategoryPropertyId = guids[22], EntityId = guids[18], Value = "13cm" },
             };
             foreach (var item in categoryProperty2EntityList)
             {
@@ -188,10 +192,10 @@ namespace FarmTracker
             detailRepository.DeleteAll();
             List<Detail> detailList = new List<Detail>
             {
-                new Detail{ Id = Guid.NewGuid(), Name = "Pregnant", RemainderDate = DateTime.UtcNow.AddDays(-15), RemainderCompletedDate = DateTime.UtcNow, DetailType = DetailType.Entity, OwnerId = guids[17]},
-                new Detail{ Id = Guid.NewGuid(), Name = "Birth", Description="100 Babies", DetailType = DetailType.Entity, OwnerId = guids[17]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Pregnant", Description="pregnant", RemainderDate = DateTime.UtcNow.AddDays(-15), RemainderCompletedDate = DateTime.UtcNow, DetailType = DetailType.Entity, OwnerId = guids[17]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Birth", Description="100 Babies", Date=DateTime.UtcNow,  DetailType = DetailType.Entity, OwnerId = guids[17]},
 
-                new Detail{ Id = Guid.NewGuid(), Name = "Patient", Description="Not eating", DetailType = DetailType.Entity, OwnerId = guids[16]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Patient", Description="Not eating", Date=DateTime.UtcNow, DetailType = DetailType.Entity, OwnerId = guids[16]},
 
                 new Detail{ Id = Guid.NewGuid(), Name = "Spraying", Description="Methylene blue", Date = DateTime.UtcNow, RemainderDate = DateTime.UtcNow.AddDays(10), DetailType = DetailType.Property, OwnerId = guids[11]},
                 new Detail{ Id = Guid.NewGuid(), Name = "Water change", Description="weakly %30 water change", Date = DateTime.UtcNow, DetailType = DetailType.Property, OwnerId = guids[11]},

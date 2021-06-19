@@ -7,6 +7,6 @@
              android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Children>
         <mypages:EntityPage IconImageSource="Home.png" Title="Entity"/>
-        <mypages:PropertyDetail IconImageSource="document.png" Title="Details"/>
+        <mypages:EntityDetailsPage IconImageSource="document.png" Title="Details"/>
     </TabbedPage.Children>
 </TabbedPage>
