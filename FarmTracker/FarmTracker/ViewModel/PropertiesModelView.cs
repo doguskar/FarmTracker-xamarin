@@ -3,6 +3,7 @@ using FarmTracker.Model;
 using MvvmHelpers;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -19,6 +20,7 @@ namespace FarmTracker.ViewModel
 
         public ICommand AddPropertyCommand { get; set; }
         public ICommand PropertiesRefreshCommand { get; set; }
+        public Command<Property> DeleteCommand { get; set; }
 
         public PropertiesViewModel()
         {
@@ -37,6 +39,7 @@ namespace FarmTracker.ViewModel
 
             AddPropertyCommand = new Command(AddProperty);
             PropertiesRefreshCommand = new Command(PropertiesRefresh);
+            DeleteCommand = new Command<Property>(Delete);
         }
 
         public Property SelectedProperty
@@ -84,6 +87,22 @@ namespace FarmTracker.ViewModel
                 }
             }
             IsPropertiesRefreshing = false;
+        }
+
+        public void Delete(Property property)
+        {
+            if (property != null)
+            {
+                int result = propertyRepository.DeletePropertyById(property.Id);
+                if (result > 0)
+                {
+                    Properties.Remove(property);
+                }
+                else
+                {
+                    App.Current.MainPage.DisplayAlert("Alert", propertyRepository.StatusMessage, "OK");
+                }
+            }
         }
 
 
