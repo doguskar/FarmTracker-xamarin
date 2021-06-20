@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmTracker.ItemFormPage"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:ItemFormViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ItemFormViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label
+                Text="{Binding FormHeader}"
+                FontSize="32"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                TextColor="#0e639c"
+                />
+            <Entry 
+                Placeholder="Name*"
+                Text="{Binding Name}"/>
+            <Entry 
+                Placeholder="Description"
+                Text="{Binding Description}"/>
+            <Entry 
+                Placeholder="Count"
+                Text="{Binding Count}" 
+                Keyboard="Numeric"/>
+            <Button
+                Text="SUBMIT"
+                BackgroundColor="#337ab7"
+                TextColor="#fff"
+                FontSize="Medium"
+                Command="{Binding SubmitCommand}"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

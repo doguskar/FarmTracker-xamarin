@@ -45,6 +45,7 @@ namespace FarmTracker.Data
             try
             {
                 List<Entity> entityList = con.Table<Entity>().Where(x => x.OwnerId.Equals(guid))
+                    .OrderByDescending(x => x.LastModifiedDate)
                     .ToList();
                 return entityList;
             }

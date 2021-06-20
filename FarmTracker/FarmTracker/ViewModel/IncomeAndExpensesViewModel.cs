@@ -15,7 +15,6 @@ namespace FarmTracker.ViewModel
         private IncomeOrExpenseRepository incomeOrExpenseRepository;
         private bool isItemsRefreshing;
 
-
         public ICommand ItemsRefreshCommand { get; set; }
         public ICommand AddItemCommand { get; set; }
         public IncomeAndExpensesViewModel()
