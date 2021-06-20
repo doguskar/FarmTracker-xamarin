@@ -80,6 +80,7 @@ namespace FarmTracker.Data
                     if (!string.IsNullOrWhiteSpace(userId))
                     {
                         user = userRepository.GetUserById(new Guid(userId));
+                        item.UserId = user.Id;
                     }
                 }
                 if (user == null)
@@ -89,7 +90,6 @@ namespace FarmTracker.Data
                 if (category == null)
                     throw new Exception(string.Format("Category is not found! [UserId: {0}", item.UserId));
 
-                item.UserId = user.Id;
                 item.LastModifiedDate = DateTime.UtcNow;
                 if (item.Id == null)
                     item.Id = Guid.NewGuid();

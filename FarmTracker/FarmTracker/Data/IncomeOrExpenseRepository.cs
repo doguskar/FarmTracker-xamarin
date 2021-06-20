@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using FarmTracker.Model;
 using SQLite;
+using Xamarin.Essentials;
 
 namespace FarmTracker.Data
 {
@@ -39,6 +40,7 @@ namespace FarmTracker.Data
             try
             {
                 return con.Table<IncomeOrExpense>().Where(x => x.UserId.Equals(guid))
+                    .OrderByDescending(x => x.Date)
                     .ToList();
             }
             catch (Exception ex)
@@ -63,8 +65,16 @@ namespace FarmTracker.Data
 
                 User user = userRepository.GetUserById(item.UserId);
                 if (user == null)
+                {
+                    string userId = Preferences.Get("userId", null);
+                    if (!string.IsNullOrWhiteSpace(userId))
+                    {
+                        user = userRepository.GetUserById(new Guid(userId));
+                        item.UserId = user.Id;
+                    }
+                }
+                if (user == null)
                     throw new Exception(string.Format("User is not found! [UserId: {0}", item.UserId));
-
 
                 item.Id = Guid.NewGuid();
                 result = con.Insert(item);
