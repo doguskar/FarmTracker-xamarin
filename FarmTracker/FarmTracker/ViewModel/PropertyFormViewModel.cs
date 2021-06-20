@@ -60,7 +60,6 @@ namespace FarmTracker.ViewModel
                 }
             }
         }
-
         private void AddProperty()
         {
             if (pickerLv3SelectedIndex >= 0)
@@ -161,7 +160,6 @@ namespace FarmTracker.ViewModel
                 (SubmitCommand as Command).ChangeCanExecute();
             }
         }
-
         public bool IsPickerLv2Active 
         { 
             get => isPickerLv2Active;

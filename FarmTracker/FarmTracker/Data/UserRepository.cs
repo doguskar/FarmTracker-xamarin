@@ -60,7 +60,7 @@ namespace FarmTracker.Data
                 if (string.IsNullOrEmpty(user.FullName))
                     throw new Exception("FullName is required");
 
-                if (user.Id == null)
+                if (user.Id == null || user.Id.Equals(new Guid()))
                     user.Id = Guid.NewGuid();
                 result = con.Insert(user);
 

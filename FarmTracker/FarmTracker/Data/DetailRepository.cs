@@ -96,7 +96,7 @@ namespace FarmTracker.Data
                     }
                 }
 
-                if (detail.Id == null)
+                if (detail.Id == null || detail.Id.Equals(new Guid()))
                     detail.Id = Guid.NewGuid();
                 detail.CreatedDate = DateTime.UtcNow;
                 result = con.Insert(detail);

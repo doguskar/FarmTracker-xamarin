@@ -91,8 +91,9 @@ namespace FarmTracker.Data
                     }
                 }
 
-                if (entity.Id == null)
+                if (entity.Id == null || entity.Id.Equals(new Guid()))
                     entity.Id = Guid.NewGuid();
+                entity.LastModifiedDate = DateTime.UtcNow;
                 result = con.Insert(entity);
 
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, entity.Name);

@@ -52,6 +52,24 @@
                         TextColor="#606060"
                         />
                     </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                        Text="Cost:"
+                        FontSize="Subtitle"
+                        TextColor="#000"
+                        />
+                        <Label
+                        FontSize="Subtitle"
+                        TextColor="#606060"
+                        >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Entity.Cost}"/>
+                                    <Span Text=" $"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </Grid>

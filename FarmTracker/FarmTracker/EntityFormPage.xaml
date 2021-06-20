@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmTracker.EntityFormPage"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:EntityFormViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:EntityFormViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label
+                Text="{Binding FormHeader}"
+                FontSize="32"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                TextColor="#0e639c"
+                />
+
+            <Entry 
+                Placeholder="Name*"
+                Text="{Binding Name}"/>
+            <Entry 
+                Placeholder="Description"
+                Text="{Binding Description}"/>
+            <Picker 
+                Title="Property Category*" 
+                ItemsSource="{Binding PickerLv1Source}"
+                SelectedIndex="{Binding PickerLv1SelectedIndex}"/>
+            <Picker 
+                Title="Property Category Lv2*" 
+                ItemsSource="{Binding PickerLv2Source}"
+                SelectedIndex="{Binding PickerLv2SelectedIndex}"
+                IsEnabled="{Binding IsPickerLv2Active}"/>
+            <Label
+                Text="Purchased Date"
+                FontSize="Medium"/>
+            <DatePicker 
+                Date="{Binding PurchasedDate}"/>
+            <Entry 
+                Placeholder="Count"
+                Text="{Binding Count}" 
+                Keyboard="Numeric"/>
+            <Entry 
+                Placeholder="Cost"
+                Text="{Binding Cost}" 
+                Keyboard="Numeric"/>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox
+                    VerticalOptions="Center"
+                    IsChecked="{Binding AddExpenseFlag}"
+                    IsEnabled="{Binding IsAddExpenseFlagActive}"/>
+                <Label
+                    VerticalOptions="Center"
+                    Text="Add Expense"
+                    FontSize="Medium"/>
+            </StackLayout>
+            <Button
+                Text="SUBMIT"
+                BackgroundColor="#337ab7"
+                TextColor="#fff"
+                FontSize="Medium"
+                Command="{Binding SubmitCommand}"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
