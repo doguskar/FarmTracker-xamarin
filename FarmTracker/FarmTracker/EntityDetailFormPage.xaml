@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmTracker.EntityDetailFormPage"
+             xmlns:model="clr-namespace:FarmTracker.Model"
+             xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
+             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
+             x:DataType="viewmodels:EntityDetailFormViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:EntityDetailFormViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label
+                Text="{Binding FormHeader}"
+                FontSize="32"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                TextColor="#0e639c"
+                />
+            <Entry 
+                Placeholder="Name*"
+                Text="{Binding Name}"/>
+            <Entry 
+                Placeholder="Description"
+                Text="{Binding Description}"/>
+            <Label
+                Text="Date"
+                FontSize="Medium"/>
+            <DatePicker 
+                Date="{Binding Date}"/>
+            <Label
+                Text="Remainder Date"
+                FontSize="Medium"/>
+            <DatePicker 
+                Date="{Binding RemainderDate}"/>
+            <Entry 
+                Placeholder="Cost"
+                Text="{Binding Cost}" 
+                Keyboard="Numeric"/>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox
+                    VerticalOptions="Center"
+                    IsChecked="{Binding AddExpenseFlag}"
+                    IsEnabled="{Binding IsAddExpenseFlagActive}"/>
+                <Label
+                    VerticalOptions="Center"
+                    Text="Add Expense"
+                    FontSize="Medium"/>
+            </StackLayout>
+            <Button
+                Text="SUBMIT"
+                BackgroundColor="#337ab7"
+                TextColor="#fff"
+                FontSize="Medium"
+                Command="{Binding SubmitCommand}"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
