@@ -12,12 +12,43 @@ namespace FarmTracker.ViewModel
     class PropertyDetailsViewModel : BaseViewModel
     {
         public ObservableRangeCollection<Detail> Details { get; set; }
+        private bool isItemsRefreshing;
+
+        public ICommand ItemsRefreshCommand { get; set; }
+        public ICommand AddItemCommand { get; set; }
+
         private DetailRepository detailRepository;
         public PropertyDetailsViewModel()
         {
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             detailRepository = new DetailRepository(System.IO.Path.Combine(path, "farmTracker"));
 
+            ItemsRefreshCommand = new Command(ItemsRefresh);
+            AddItemCommand = new Command(AddItem);
+
+            LoadItems();
+        }
+        public bool IsItemsRefreshing
+        {
+            get => isItemsRefreshing;
+            set
+            {
+                isItemsRefreshing = value;
+                OnPropertyChanged();
+            }
+        }
+        public void AddItem()
+        {
+            App.Current.MainPage.Navigation.PushModalAsync(new PropertyDetailFormPage());
+        }
+        public void ItemsRefresh()
+        {
+            IsItemsRefreshing = true;
+            LoadItems();
+            IsItemsRefreshing = false;
+        }
+        private void LoadItems()
+        {
             string currentPropertyId = Preferences.Get("currentPropertyId", null);
             if (!string.IsNullOrWhiteSpace(currentPropertyId))
             {
@@ -47,7 +78,18 @@ namespace FarmTracker.ViewModel
                             item.Image = "document.png";
                         }
                     }
-                    Details = new ObservableRangeCollection<Detail>(detailList);
+                    if (Details == null)
+                    {
+                        Details = new ObservableRangeCollection<Detail>(detailList);
+                    }
+                    else
+                    {
+                        Details.Clear();
+                        foreach (var item in detailList)
+                        {
+                            Details.Add(item);
+                        }
+                    }
                 }
             }
         }

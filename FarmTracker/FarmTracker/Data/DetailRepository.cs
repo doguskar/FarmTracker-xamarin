@@ -43,6 +43,7 @@ namespace FarmTracker.Data
             try
             {
                 return con.Table<Detail>().Where(x => x.OwnerId.Equals(guid))
+                    .OrderByDescending(x => x.CreatedDate)
                     .ToList();
             }
             catch (Exception ex)
@@ -97,6 +98,7 @@ namespace FarmTracker.Data
 
                 if (detail.Id == null)
                     detail.Id = Guid.NewGuid();
+                detail.CreatedDate = DateTime.UtcNow;
                 result = con.Insert(detail);
 
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, detail.Name);

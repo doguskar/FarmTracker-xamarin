@@ -14,6 +14,7 @@ namespace FarmTracker.Model
         public DateTime? RemainderDate { get; set; }
         public DateTime? RemainderCompletedDate { get; set; }
         public DetailType? DetailType { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public Guid OwnerId { get; set; }
 
