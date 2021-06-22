@@ -147,11 +147,11 @@ namespace FarmTracker
             entityRepository.DeleteAll();
             List<Entity> entityList = new List<Entity>
             {
-                new Entity{ Id = guids[16], Name = "Male Blue Dolphin", Description = "17cm Male Blue Dolphin", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = guids[17], Name = "Female Blue Dolphin 1", Description = "13cm Female Blue Dolphin 1", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = guids[18], Name = "Female Blue Dolphin 2", Description = "Female Blue Dolphin 2", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
-                new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow", Description = "Electric Yellow", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow 2", Description = "Electric Yellow 2", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = Guid.NewGuid(), Name = "Electric Yellow", Description = "Electric Yellow", Count = 1, Cost = 0, CategoryId = guids[7], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = guids[18], Name = "Female Blue Dolphin 2", Description = "Female Blue Dolphin 2", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = guids[17], Name = "Female Blue Dolphin 1", Description = "13cm Female Blue Dolphin 1", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
+                new Entity{ Id = guids[16], Name = "Male Blue Dolphin", Description = "17cm Male Blue Dolphin", Count = 1, Cost = 0, CategoryId = guids[6], OwnerId = guids[11], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = Guid.NewGuid(), Name = "Blue Dolphin", Description = "Blue Dolphin", Count = 100, Cost = 0, CategoryId = guids[6], OwnerId = guids[12], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = Guid.NewGuid(), Name = "Angle", Description = "Angle", Count = 1, Cost = 0, CategoryId = guids[15], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
                 new Entity{ Id = Guid.NewGuid(), Name = "Guppy", Description = "Guppy", Count = 5, Cost = 0, CategoryId = guids[9], OwnerId = guids[13], EntityType = EntityType.Alive, LastModifiedDate = DateTime.UtcNow },
@@ -196,6 +196,7 @@ namespace FarmTracker
             {
                 new Detail{ Id = Guid.NewGuid(), Name = "Pregnant", Description="pregnant", RemainderDate = DateTime.UtcNow.AddDays(-15), RemainderCompletedDate = DateTime.UtcNow, DetailType = DetailType.Entity, OwnerId = guids[17]},
                 new Detail{ Id = Guid.NewGuid(), Name = "Birth", Description="100 Babies", Date=DateTime.UtcNow,  DetailType = DetailType.Entity, OwnerId = guids[17]},
+                new Detail{ Id = Guid.NewGuid(), Name = "Vitamin", Description="Reeflowers cichlid", Date=DateTime.UtcNow, Cost = 85, DetailType = DetailType.Entity, OwnerId = guids[17]},
 
                 new Detail{ Id = Guid.NewGuid(), Name = "Patient", Description="Not eating", Date=DateTime.UtcNow, DetailType = DetailType.Entity, OwnerId = guids[16]},
 
@@ -222,6 +223,7 @@ namespace FarmTracker
                 new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Plant", Description = "some plant sold", Cost = 50, IncomeFlag = true, Date = DateTime.UtcNow.AddDays(-7).AddHours(-12), UserId = guids[10] },
                 new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Medicine", Description = "Methylene blue", Cost = 55, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-2).AddHours(-2), UserId = guids[10] },
                 new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Item", Description = "Airpump", Cost = 155, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-2).AddHours(-2), UserId = guids[10] },
+                new IncomeOrExpense{ Id = Guid.NewGuid(), Name = "Vitamin", Description = "Reeflowers cichlid", Cost = 85, IncomeFlag = false, Date = DateTime.UtcNow.AddDays(-8).AddHours(-2), UserId = guids[10] },
             };
             foreach (var item in incomeAndExpensesList)
             {
