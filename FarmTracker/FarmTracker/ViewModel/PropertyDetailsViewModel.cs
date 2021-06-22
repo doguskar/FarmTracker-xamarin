@@ -16,6 +16,7 @@ namespace FarmTracker.ViewModel
 
         public ICommand ItemsRefreshCommand { get; set; }
         public ICommand AddItemCommand { get; set; }
+        public Command<Property> DeleteCommand { get; set; }
 
         private DetailRepository detailRepository;
         public PropertyDetailsViewModel()
@@ -25,6 +26,7 @@ namespace FarmTracker.ViewModel
 
             ItemsRefreshCommand = new Command(ItemsRefresh);
             AddItemCommand = new Command(AddItem);
+            DeleteCommand = new Command<Property>(Delete);
 
             LoadItems();
         }
@@ -90,6 +92,21 @@ namespace FarmTracker.ViewModel
                             Details.Add(item);
                         }
                     }
+                }
+            }
+        }
+        public void Delete(Detail item)
+        {
+            if (item != null)
+            {
+                int result = detailRepository.DeleteDetailById(item.Id);
+                if (result > 0)
+                {
+                    Details.Remove(item);
+                }
+                else
+                {
+                    App.Current.MainPage.DisplayAlert("Alert", detailRepository.StatusMessage, "OK");
                 }
             }
         }
