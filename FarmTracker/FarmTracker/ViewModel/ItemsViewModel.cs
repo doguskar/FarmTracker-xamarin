@@ -16,6 +16,7 @@ namespace FarmTracker.ViewModel
 
         public ICommand ItemsRefreshCommand { get; set; }
         public ICommand AddItemCommand { get; set; }
+        public Command<Entity> DeleteCommand { get; set; }
 
         private EntityRepository entityRepository;
         private CategoryRepository categoryRepository;
@@ -27,6 +28,7 @@ namespace FarmTracker.ViewModel
 
             ItemsRefreshCommand = new Command(ItemsRefresh);
             AddItemCommand = new Command(AddItem);
+            DeleteCommand = new Command<Entity>(Delete);
 
             LoadItems();
         }
@@ -75,6 +77,21 @@ namespace FarmTracker.ViewModel
                             Entities.Add(item);
                         }
                     }
+                }
+            }
+        }
+        public void Delete(Entity item)
+        {
+            if (item != null)
+            {
+                int result = entityRepository.DeleteEntityById(item.Id);
+                if (result > 0)
+                {
+                    Entities.Remove(item);
+                }
+                else
+                {
+                    App.Current.MainPage.DisplayAlert("Alert", entityRepository.StatusMessage, "OK");
                 }
             }
         }
