@@ -5,7 +5,8 @@
              xmlns:model="clr-namespace:FarmTracker.Model"
              xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
              xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
-             x:DataType="viewmodels:PropertyViewModel" >
+             x:DataType="viewmodels:PropertyViewModel"
+             x:Name="PropertyPageName">
 
     <ContentPage.BindingContext>
         <viewmodels:PropertyViewModel />
@@ -42,6 +43,14 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:Entity">
                             <ViewCell  Height="250">
+                                <ViewCell.ContextActions>
+                                    <MenuItem 
+                                        Command="{Binding 
+                                        Source={x:Reference PropertyPageName}, 
+                                        Path=BindingContext.DeleteCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Delete"/>
+                                </ViewCell.ContextActions>
                                 <Grid Margin="0,10,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10*" />
