@@ -35,14 +35,15 @@
             <Entry 
                 Grid.Row="4"
                 Placeholder="Password*" 
-                IsPassword="True"
+                IsPassword="{Binding IsPassword}"
                 Text="{Binding Password}"/>
             <ImageButton 
                 Grid.Row="4"
                 Source="eye.png"
                 BackgroundColor="Transparent"
                 Padding="5"
-                HorizontalOptions="End"/>
+                HorizontalOptions="End"
+                Command="{Binding ShowPasswordCommand}"/>
             <Entry 
                 Grid.Row="5"
                 Placeholder="Email*"

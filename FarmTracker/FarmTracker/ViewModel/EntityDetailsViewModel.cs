@@ -99,7 +99,7 @@ namespace FarmTracker.ViewModel
         {
             if (item != null)
             {
-                int result = detailRepository.DeleteEntityById(item.Id);
+                int result = detailRepository.DeleteDetailById(item.Id);
                 if (result > 0)
                 {
                     Details.Remove(item);

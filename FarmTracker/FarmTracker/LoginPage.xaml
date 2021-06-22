@@ -39,7 +39,7 @@
                 BackgroundColor="Transparent"
                 Padding="5"
                 HorizontalOptions="End"
-                Command="{Binding ShowPasswordCommand}}"/>
+                Command="{Binding ShowPasswordCommand}"/>
             <Button
                 Grid.Row="4"
                 Text="LOGIN"

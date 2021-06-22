@@ -27,6 +27,9 @@
             <Entry 
                 Placeholder="Description"
                 Text="{Binding Description}"/>
+            <Label
+                    Text="Cost"
+                    FontSize="Medium"/>
             <Entry 
                 Placeholder="Cost"
                 Text="{Binding Cost}" 

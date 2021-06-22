@@ -36,6 +36,9 @@
                 FontSize="Medium"/>
             <DatePicker 
                 Date="{Binding RemainderDate}"/>
+            <Label
+                Text="Cost"
+                FontSize="Medium"/>
             <Entry 
                 Placeholder="Cost"
                 Text="{Binding Cost}" 

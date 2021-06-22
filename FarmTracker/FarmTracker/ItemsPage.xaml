@@ -34,7 +34,7 @@
                     <ListView.Header>
                         <ContentView>
                             <Label 
-                            Text="Products"
+                            Text="Items"
                             FontSize="Title"
                             TextColor="#3F9704"
                             />

@@ -41,10 +41,16 @@
                 FontSize="Medium"/>
             <DatePicker 
                 Date="{Binding PurchasedDate}"/>
+            <Label
+                    Text="Count"
+                    FontSize="Medium"/>
             <Entry 
                 Placeholder="Count"
                 Text="{Binding Count}" 
                 Keyboard="Numeric"/>
+            <Label
+                    Text="Cost"
+                    FontSize="Medium"/>
             <Entry 
                 Placeholder="Cost"
                 Text="{Binding Cost}" 

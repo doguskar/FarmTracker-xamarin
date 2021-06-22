@@ -53,7 +53,7 @@ namespace FarmTracker.ViewModel
             });
             if (result > 0)
             {
-                if (cost > 0 && isAddExpenseFlagActive)
+                if (cost > 0 && addExpenseFlag)
                 {
                     incomeOrExpenseRepository.InsertIncomeOrExpense(new IncomeOrExpense
                     {

@@ -26,6 +26,9 @@
             <Entry 
                 Placeholder="Description"
                 Text="{Binding Description}"/>
+            <Label
+                    Text="Count"
+                    FontSize="Medium"/>
             <Entry 
                 Placeholder="Count"
                 Text="{Binding Count}" 
