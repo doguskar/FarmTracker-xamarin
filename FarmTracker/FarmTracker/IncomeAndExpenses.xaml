@@ -5,7 +5,8 @@
              xmlns:model="clr-namespace:FarmTracker.Model"
              xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
              xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
-             x:DataType="viewmodels:IncomeAndExpensesViewModel">
+             x:DataType="viewmodels:IncomeAndExpensesViewModel"
+             x:Name="IncomeAndExpensesName">
 
     <ContentPage.BindingContext>
         <viewmodels:IncomeAndExpensesViewModel />
@@ -43,6 +44,14 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:IncomeOrExpense">
                             <ViewCell  Height="75">
+                                <ViewCell.ContextActions>
+                                    <MenuItem 
+                                        Command="{Binding 
+                                        Source={x:Reference IncomeAndExpensesName}, 
+                                        Path=BindingContext.DeleteCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Delete"/>
+                                </ViewCell.ContextActions>
                                 <Frame Padding="10,0,10,0" HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
                                     <Grid>
                                         <Grid.ColumnDefinitions>

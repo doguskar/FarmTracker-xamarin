@@ -16,7 +16,7 @@ namespace FarmTracker.ViewModel
 
         public ICommand ItemsRefreshCommand { get; set; }
         public ICommand AddItemCommand { get; set; }
-        public Command<Property> DeleteCommand { get; set; }
+        public Command<Detail> DeleteCommand { get; set; }
 
         private DetailRepository detailRepository;
         public PropertyDetailsViewModel()
@@ -26,7 +26,7 @@ namespace FarmTracker.ViewModel
 
             ItemsRefreshCommand = new Command(ItemsRefresh);
             AddItemCommand = new Command(AddItem);
-            DeleteCommand = new Command<Property>(Delete);
+            DeleteCommand = new Command<Detail>(Delete);
 
             LoadItems();
         }

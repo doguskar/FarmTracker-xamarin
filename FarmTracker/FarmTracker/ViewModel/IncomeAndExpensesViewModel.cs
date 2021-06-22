@@ -17,6 +17,8 @@ namespace FarmTracker.ViewModel
 
         public ICommand ItemsRefreshCommand { get; set; }
         public ICommand AddItemCommand { get; set; }
+        public Command<IncomeOrExpense> DeleteCommand { get; set; }
+
         public IncomeAndExpensesViewModel()
         {
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
@@ -24,6 +26,7 @@ namespace FarmTracker.ViewModel
 
             ItemsRefreshCommand = new Command(ItemsRefresh);
             AddItemCommand = new Command(AddItem);
+            DeleteCommand = new Command<IncomeOrExpense>(Delete);
 
             LoadItems();
         }
@@ -78,6 +81,21 @@ namespace FarmTracker.ViewModel
                             IncomeOrExpenses.Add(item);
                         }
                     }
+                }
+            }
+        }
+        public void Delete(IncomeOrExpense item)
+        {
+            if (item != null)
+            {
+                int result = incomeOrExpenseRepository.DeleteIncomeOrExpenseById(item.Id);
+                if (result > 0)
+                {
+                    IncomeOrExpenses.Remove(item);
+                }
+                else
+                {
+                    App.Current.MainPage.DisplayAlert("Alert", incomeOrExpenseRepository.StatusMessage, "OK");
                 }
             }
         }
