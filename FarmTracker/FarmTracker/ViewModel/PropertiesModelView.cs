@@ -21,6 +21,7 @@ namespace FarmTracker.ViewModel
         public ICommand AddPropertyCommand { get; set; }
         public ICommand PropertiesRefreshCommand { get; set; }
         public Command<Property> DeleteCommand { get; set; }
+        public Command<Property> UpdateCommand { get; set; }
 
         public PropertiesViewModel()
         {
@@ -40,6 +41,7 @@ namespace FarmTracker.ViewModel
             AddPropertyCommand = new Command(AddProperty);
             PropertiesRefreshCommand = new Command(PropertiesRefresh);
             DeleteCommand = new Command<Property>(Delete);
+            UpdateCommand = new Command<Property>(Update);
         }
 
         public Property SelectedProperty
@@ -68,6 +70,7 @@ namespace FarmTracker.ViewModel
         }
         public void AddProperty()
         {
+            Preferences.Remove("currentUpdatePropertyId");
             App.Current.MainPage.Navigation.PushModalAsync(new PropertyFormPage());
         }
         public void PropertiesRefresh()
@@ -88,7 +91,6 @@ namespace FarmTracker.ViewModel
             }
             IsPropertiesRefreshing = false;
         }
-
         public void Delete(Property property)
         {
             if (property != null)
@@ -102,6 +104,14 @@ namespace FarmTracker.ViewModel
                 {
                     App.Current.MainPage.DisplayAlert("Alert", propertyRepository.StatusMessage, "OK");
                 }
+            }
+        }
+        public void Update(Property property)
+        {
+            if (property != null)
+            {
+                Preferences.Set("currentUpdatePropertyId", property.Id.ToString());
+                App.Current.MainPage.Navigation.PushModalAsync(new PropertyFormPage());
             }
         }
 

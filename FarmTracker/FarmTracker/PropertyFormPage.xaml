@@ -30,17 +30,20 @@
             <Picker 
                 Title="Property Category*" 
                 ItemsSource="{Binding PickerLv1Source}"
-                SelectedIndex="{Binding PickerLv1SelectedIndex}"/>
+                SelectedIndex="{Binding PickerLv1SelectedIndex}"
+                IsVisible="{Binding IsVisiblePickers}"/>
             <Picker 
                 Title="Property Category Lv2*" 
                 ItemsSource="{Binding PickerLv2Source}"
                 SelectedIndex="{Binding PickerLv2SelectedIndex}"
-                IsEnabled="{Binding IsPickerLv2Active}"/>
+                IsEnabled="{Binding IsPickerLv2Active}"
+                IsVisible="{Binding IsVisiblePickers}"/>
             <Picker 
                 Title="Property Category Lv3*" 
                 ItemsSource="{Binding PickerLv3Source}"
                 SelectedIndex="{Binding PickerLv3SelectedIndex}"
-                IsEnabled="{Binding IsPickerLv3Active}"/>
+                IsEnabled="{Binding IsPickerLv3Active}"
+                IsVisible="{Binding IsVisiblePickers}"/>
             <Button
                 Text="SUBMIT"
                 BackgroundColor="#337ab7"

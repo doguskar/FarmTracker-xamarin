@@ -52,7 +52,12 @@
                                         Path=BindingContext.DeleteCommand}"
                                         CommandParameter="{Binding .}"
                                         Text="Delete"/>
-                                    <MenuItem Text="Update"/>
+                                    <MenuItem 
+                                        Command="{Binding 
+                                        Source={x:Reference PropertiesPageName}, 
+                                        Path=BindingContext.UpdateCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Update"/>
                                 </ViewCell.ContextActions>
                                 <Grid Margin="0,10,0,0">
                                     <Grid.RowDefinitions>

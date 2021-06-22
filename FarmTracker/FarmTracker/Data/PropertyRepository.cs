@@ -102,6 +102,21 @@ namespace FarmTracker.Data
             }
             return result;
         }
+        public int Update(Property item)
+        {
+            int result = 0;
+            try
+            {
+                item.LastModifiedDate = DateTime.UtcNow;
+                result = con.Update(item);
+                StatusMessage = string.Format("{0} record(s) updated [Name: {1})", result, item.Name);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to update {0}. Error: {1}", item.Id, ex.Message);
+            }
+            return result;
+        }
         public int DeletePropertyById(Guid guid)
         {
             int result = 0;

@@ -13,11 +13,9 @@ namespace FarmTracker.ViewModel
     {
         private string name;
         private string description;
-        private string image;
         private int pickerLv1SelectedIndex = -1;
         private int pickerLv2SelectedIndex = -1;
         private int pickerLv3SelectedIndex = -1;
-        private string categoryId;
         public string FormHeader { get; set; }
         public ObservableRangeCollection<string> PickerLv1Source { get; set; }
         public ObservableRangeCollection<string> PickerLv2Source { get; set; }
@@ -27,6 +25,7 @@ namespace FarmTracker.ViewModel
         private List<Category> SubCategoriesLv3;
         private bool isPickerLv2Active;
         private bool isPickerLv3Active;
+        private bool isVisiblePickers = true;
 
 
 
@@ -40,6 +39,21 @@ namespace FarmTracker.ViewModel
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             propertyRepository = new PropertyRepository(System.IO.Path.Combine(path, "farmTracker"));
             categoryRepository = new CategoryRepository(System.IO.Path.Combine(path, "farmTracker"));
+
+            string currentUpdatePropertyId = Preferences.Get("currentUpdatePropertyId", null);
+            if (!string.IsNullOrWhiteSpace(currentUpdatePropertyId))
+            {
+                Property property = propertyRepository.GetPropertyById(new Guid(currentUpdatePropertyId));
+                if (property != null)
+                {
+                    name = property.Name;
+                    description = property.Description;
+                    FormHeader = "Update Property";
+                    SubmitCommand = new Command(Update, CanUpdate);
+                    IsVisiblePickers = false;
+                    return;
+                }
+            }
 
             FormHeader = "Add Property";
             SubmitCommand = new Command(AddProperty, CanAddProperty);
@@ -85,6 +99,32 @@ namespace FarmTracker.ViewModel
         private bool CanAddProperty()
         {
             return pickerLv3SelectedIndex >= 0 && !String.IsNullOrWhiteSpace(name);
+        }
+        private void Update()
+        {
+            string currentUpdatePropertyId = Preferences.Get("currentUpdatePropertyId", null);
+            if (!string.IsNullOrWhiteSpace(currentUpdatePropertyId))
+            {
+                Property property = propertyRepository.GetPropertyById(new Guid(currentUpdatePropertyId));
+                if (property != null)
+                {
+                    property.Name = name;
+                    property.Description = description;
+                    int result = propertyRepository.Update(property);
+                    if (result > 0)
+                    {
+                        App.Current.MainPage.Navigation.PopModalAsync();
+                    }
+                    else
+                    {
+                        App.Current.MainPage.DisplayAlert("Alert", propertyRepository.StatusMessage, "OK");
+                    }
+                }
+            }
+        }
+        private bool CanUpdate()
+        {
+            return !String.IsNullOrWhiteSpace(name);
         }
 
         public string Name
@@ -175,6 +215,15 @@ namespace FarmTracker.ViewModel
             set 
             {
                 isPickerLv3Active = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool IsVisiblePickers
+        { 
+            get => isVisiblePickers;
+            set 
+            {
+                isVisiblePickers = value;
                 OnPropertyChanged();
             }
         }
