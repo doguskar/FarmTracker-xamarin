@@ -5,7 +5,8 @@
              xmlns:model="clr-namespace:FarmTracker.Model"
              xmlns:viewmodels="clr-namespace:FarmTracker.ViewModel"
              xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
-             x:DataType="viewmodels:EntityDetailsViewModel">
+             x:DataType="viewmodels:EntityDetailsViewModel"
+             x:Name="EntityDetailsPageName">
 
     <ContentPage.BindingContext>
         <viewmodels:EntityDetailsViewModel />
@@ -42,6 +43,14 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:Detail">
                             <ViewCell  Height="120">
+                                <ViewCell.ContextActions>
+                                    <MenuItem 
+                                        Command="{Binding 
+                                        Source={x:Reference EntityDetailsPageName}, 
+                                        Path=BindingContext.DeleteCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Delete"/>
+                                </ViewCell.ContextActions>
                                 <Frame  HorizontalOptions="FillAndExpand"  HasShadow="True"  Margin="0,5,0,5">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
